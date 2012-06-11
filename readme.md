@@ -5,7 +5,9 @@ This is a not-quite-feature-complete fully managed client for the ETrade API.  I
  - Market Data
  - Basic Order Execution
 
-This set of libraries is used in production in my trading automation currently, so the features that are implemented work at least, though not all of them it be designed optimally.  Many of the shortcomings are due to the current state of the ETrade documentation (it's bad).  So in the interest of reducing frustration globally, I offer these humble libraries.
+This set of libraries is used in production in my trading automation, so the implementations do work, though not all of them may be designed well...  
+
+It has been a lot of work to figure out how to call the API, oddly.  Most of the difficulty has been due to the current state of the ETrade documentation (it's pretty bad).  So in the interest of reducing frustration globally, I offer these humble libraries as a starting point.  Hopefully someone more talented will carry the torch!
 
 ##Examples
 ```csharp
