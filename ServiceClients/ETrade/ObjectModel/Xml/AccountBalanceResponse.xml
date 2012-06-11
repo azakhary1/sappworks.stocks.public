@@ -1,0 +1,32 @@
+﻿<AccountBalanceResponse>
+  <accountId>83353535</accountId>
+  <accountType>MARGIN</accountType>
+  <optionLevel>LEVEL_4</optionLevel>
+  <accountBalance>
+    <cashAvailableForWithdrawal>0.00</cashAvailableForWithdrawal>
+    <netAccountValue>-663.20</netAccountValue>
+    <netCash>-740.450013</netCash>
+    <sweepDepositAmount>0.00</sweepDepositAmount>
+    <totalLongValue>122.23</totalLongValue>
+    <totalSecuritiesMktValue>-454.22</totalSecuritiesMktValue>
+  </accountBalance>
+  <marginAccountBalance>
+    <dtBalance>
+      <dtCashBalance>0.00</dtCashBalance>
+      <dtMarginBalance>0.00</dtMarginBalance>
+      <dtMarginableSecurities>-4183.73</dtMarginableSecurities>
+      <dtNonMarginableSecuritiesAndOptions>-2714.88</dtNonMarginableSecuritiesAndOptions>
+      <dtStatus>QUALIFIED_4_X</dtStatus>
+    </dtBalance>
+    <fedCall>-105.49</fedCall>
+    <marginBalance>-740.45</marginBalance>
+    <marginBalanceWithdrawal>-2714.88</marginBalanceWithdrawal>
+    <marginEquity>-714.88</marginEquity>
+    <marginableSecurities>-4183.73</marginableSecurities>
+    <maxAvailableForWithdrawal>-2714.88</maxAvailableForWithdrawal>
+    <minEquityCall>-25663.20</minEquityCall>
+    <nonMarginableSecuritiesAndOptions>-2714.88</nonMarginableSecuritiesAndOptions>
+    <totalShortValue>-576.45</totalShortValue>
+    <shortReserve>531.47</shortReserve>
+  </marginAccountBalance>
+</AccountBalanceResponse>

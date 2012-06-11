@@ -1,0 +1,16 @@
+﻿<AccountListResponse>
+  <Account>
+    <accountDesc>INDIVIDUAL</accountDesc>
+    <accountId>83353535</accountId>
+    <marginLevel>MARGIN</marginLevel>
+    <netAccountValue>-663.20</netAccountValue>
+    <registrationType>INDIVIDUAL</registrationType>
+  </Account>
+  <Account>
+    <accountDesc>INDIVIDUAL</accountDesc>
+    <accountId>83353535</accountId>
+    <marginLevel>MARGIN</marginLevel>
+    <netAccountValue>-663.20</netAccountValue>
+    <registrationType>INDIVIDUAL</registrationType>
+  </Account>
+</AccountListResponse>

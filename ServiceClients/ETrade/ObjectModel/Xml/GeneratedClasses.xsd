@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AccountBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="accountId" type="xs:unsignedInt" />
+        <xs:element name="accountType" type="xs:string" />
+        <xs:element name="optionLevel" type="xs:string" />
+        <xs:element name="accountBalance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cashAvailableForWithdrawal" type="xs:decimal" />
+              <xs:element name="netAccountValue" type="xs:decimal" />
+              <xs:element name="netCash" type="xs:decimal" />
+              <xs:element name="sweepDepositAmount" type="xs:decimal" />
+              <xs:element name="totalLongValue" type="xs:decimal" />
+              <xs:element name="totalSecuritiesMktValue" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="marginAccountBalance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dtBalance">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="dtCashBalance" type="xs:decimal" />
+                    <xs:element name="dtMarginBalance" type="xs:decimal" />
+                    <xs:element name="dtMarginableSecurities" type="xs:decimal" />
+                    <xs:element name="dtNonMarginableSecuritiesAndOptions" type="xs:decimal" />
+                    <xs:element name="dtStatus" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="fedCall" type="xs:decimal" />
+              <xs:element name="marginBalance" type="xs:decimal" />
+              <xs:element name="marginBalanceWithdrawal" type="xs:decimal" />
+              <xs:element name="marginEquity" type="xs:decimal" />
+              <xs:element name="marginableSecurities" type="xs:decimal" />
+              <xs:element name="maxAvailableForWithdrawal" type="xs:decimal" />
+              <xs:element name="minEquityCall" type="xs:decimal" />
+              <xs:element name="nonMarginableSecuritiesAndOptions" type="xs:decimal" />
+              <xs:element name="totalShortValue" type="xs:decimal" />
+              <xs:element name="shortReserve" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AccountListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Account">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accountDesc" type="xs:string" />
+              <xs:element name="accountId" type="xs:unsignedInt" />
+              <xs:element name="marginLevel" type="xs:string" />
+              <xs:element name="netAccountValue" type="xs:decimal" />
+              <xs:element name="registrationType" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AccountPositionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="accountId" type="xs:unsignedInt" />
+        <xs:element name="count" type="xs:short" />
+        <xs:element name="marker" type="xs:string" />
+        <xs:element name="AccountPositions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="AccountPosition">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="costBasis" type="xs:decimal" />
+                    <xs:element name="description" type="xs:string" />
+                    <xs:element name="longOrShort" type="xs:string" />
+                    <xs:element name="marginable" type="xs:boolean" />
+                    <xs:element name="productId">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="symbol" type="xs:string" />
+                          <xs:element name="typeCode" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="qty" type="xs:decimal" />
+                    <xs:element name="marketValue" type="xs:decimal" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="GetOrderListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="orderListResponse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="count" type="xs:int" />
+              <xs:element name="marker" type="xs:string" />
+              <xs:element name="orderDetails">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="OrderDetails">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="order">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="orderId" type="xs:long" />
+                                <xs:element name="orderPlacedTime" type="xs:unsignedLong" />
+                                <xs:element minOccurs="0" name="orderExecutedTime" type="xs:unsignedLong" />
+                                <xs:element name="orderValue" type="xs:decimal" />
+                                <xs:element name="orderStatus" type="xs:string" />
+                                <xs:element name="orderType" type="xs:string" />
+                                <xs:element name="orderTerm" type="xs:string" />
+                                <xs:element name="priceType" type="xs:string" />
+                                <xs:element name="limitPrice" type="xs:decimal" />
+                                <xs:element name="stopPrice" type="xs:decimal" />
+                                <xs:element name="legDetails">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="LegDetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="legNumber" type="xs:long" />
+                                            <xs:element name="symbolInfo">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="symbol" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="callPut" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="expYear" type="xs:short" />
+                                                  <xs:element minOccurs="0" name="expMonth" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="expDay" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="strikePrice" type="xs:decimal" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="symbolDescription" type="xs:string" />
+                                            <xs:element name="orderAction" type="xs:string" />
+                                            <xs:element name="orderedQuantity" type="xs:decimal" />
+                                            <xs:element name="filledQuantity" type="xs:decimal" />
+                                            <xs:element name="executedPrice" type="xs:decimal" />
+                                            <xs:element name="estimatedCommission" type="xs:decimal" />
+                                            <xs:element name="estimatedFees" type="xs:decimal" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="replacedByOrderId" type="xs:long" />
+                                <xs:element name="allOrNone" type="xs:boolean" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="EquityOrderRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="accountId" type="xs:unsignedInt" />
+        <xs:element name="clientOrderId" type="xs:string" />
+        <xs:element name="limitPrice" type="xs:decimal" />
+        <xs:element name="previewId" type="xs:int" nillable="true" />
+        <xs:element name="stopPrice" type="xs:decimal" />
+        <xs:element name="stopLimitPrice" type="xs:decimal" />
+        <xs:element name="allOrNone" type="xs:boolean" />
+        <xs:element name="quantity" type="xs:int" />
+        <xs:element name="reserveOrder" type="xs:boolean" />
+        <xs:element name="reserveQuantity" type="xs:int" />
+        <xs:element name="symbol" type="xs:string" />
+        <xs:element name="orderAction" type="xs:string" />
+        <xs:element name="priceType" type="xs:string" />
+        <xs:element name="routingDestination" type="xs:string" />
+        <xs:element name="marketSession" type="xs:string" />
+        <xs:element name="orderTerm" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PlaceEquityOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="equityOrderResponse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accountId" type="xs:unsignedInt" />
+              <xs:element name="allOrNone" type="xs:boolean" />
+              <xs:element name="estimatedCommission" type="xs:decimal" />
+              <xs:element name="estimatedTotalAmount" type="xs:decimal" />
+              <xs:element name="messageList">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="message">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="msgDesc" type="xs:string" />
+                          <xs:element name="msgCode" type="xs:int" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="orderNum" type="xs:int" />
+              <xs:element name="orderTime" type="xs:unsignedLong" />
+              <xs:element name="quantity" type="xs:int" />
+              <xs:element name="reserveOrder" type="xs:boolean" />
+              <xs:element name="reserveQuantity" type="xs:int" />
+              <xs:element name="orderTerm" type="xs:string" />
+              <xs:element name="limitPrice" type="xs:decimal" />
+              <xs:element name="stopPrice" type="xs:decimal" />
+              <xs:element name="symbolDesc" type="xs:string" />
+              <xs:element name="symbol" type="xs:string" />
+              <xs:element name="orderAction" type="xs:string" />
+              <xs:element name="priceType" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="QuoteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="QuoteData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="all">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="adjNonAdjFlag" type="xs:boolean" />
+                    <xs:element name="annualDividend" type="xs:decimal" />
+                    <xs:element name="ask" type="xs:decimal" />
+                    <xs:element name="askExchange" type="xs:string" />
+                    <xs:element name="askSize" type="xs:unsignedShort" />
+                    <xs:element name="askTime" type="xs:string" />
+                    <xs:element name="bid" type="xs:decimal" />
+                    <xs:element name="bidExchange" type="xs:string" />
+                    <xs:element name="bidSize" type="xs:unsignedShort" />
+                    <xs:element name="bidTime" type="xs:string" />
+                    <xs:element name="chgClose" type="xs:decimal" />
+                    <xs:element name="chgClosePrcn" type="xs:decimal" />
+                    <xs:element name="companyName" type="xs:string" />
+                    <xs:element name="daysToExpiration" type="xs:unsignedByte" />
+                    <xs:element name="dirLast" type="xs:string" />
+                    <xs:element name="dividend" type="xs:decimal" />
+                    <xs:element name="eps" type="xs:decimal" />
+                    <xs:element name="estEarnings" type="xs:decimal" />
+                    <xs:element name="exDivDate" type="xs:string" />
+                    <xs:element name="exchgLastTrade" type="xs:string" />
+                    <xs:element name="fsi" type="xs:string" />
+                    <xs:element name="high" type="xs:decimal" />
+                    <xs:element name="high52" type="xs:decimal" />
+                    <xs:element name="highAsk" type="xs:decimal" />
+                    <xs:element name="highBid" type="xs:decimal" />
+                    <xs:element name="lastTrade" type="xs:decimal" />
+                    <xs:element name="low" type="xs:decimal" />
+                    <xs:element name="low52" type="xs:decimal" />
+                    <xs:element name="lowAsk" type="xs:decimal" />
+                    <xs:element name="lowBid" type="xs:decimal" />
+                    <xs:element name="numTrades" type="xs:unsignedInt" />
+                    <xs:element name="open" type="xs:decimal" />
+                    <xs:element name="openInterest" type="xs:unsignedByte" />
+                    <xs:element name="optionStyle" />
+                    <xs:element name="optionUnderlier" />
+                    <xs:element name="prevClose" type="xs:decimal" />
+                    <xs:element name="prevDayVolume" type="xs:unsignedInt" />
+                    <xs:element name="primaryExchange" type="xs:string" />
+                    <xs:element name="symbolDesc" type="xs:string" />
+                    <xs:element name="todayClose" type="xs:decimal" />
+                    <xs:element name="totalVolume" type="xs:unsignedInt" />
+                    <xs:element name="upc" type="xs:unsignedByte" />
+                    <xs:element name="volume10Day" type="xs:unsignedInt" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="dateTime" type="xs:string" />
+              <xs:element name="product">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="symbol" type="xs:string" />
+                    <xs:element name="type" type="xs:string" />
+                    <xs:element name="exchange" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

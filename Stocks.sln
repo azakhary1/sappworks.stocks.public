@@ -1,0 +1,93 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{C0DA4575-E918-438C-8C27-C67B00931B6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{28C69102-D8A8-4F42-AF94-687E4027FDF4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceClients", "ServiceClients\ServiceClients.csproj", "{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Tests", "DAL.Tests\DAL.Tests.csproj", "{3868CCE2-565B-4493-B828-30E4EDB2CA67}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0690B862-A31F-4DD7-ABBC-BB8851357E60}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		Stocks.vsmdi = Stocks.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OAuth", "OAuth", "{725AFBEF-40D4-4133-9A62-E2122FE878DC}"
+	ProjectSection(SolutionItems) = preProject
+		Dependencies\OAuth\DevDefined.OAuth.dll = Dependencies\OAuth\DevDefined.OAuth.dll
+		Dependencies\OAuth\DevDefined.OAuth.pdb = Dependencies\OAuth\DevDefined.OAuth.pdb
+		Dependencies\OAuth\jejernig-DevDefined.OAuth---Etrade-c61cb85.zip = Dependencies\OAuth\jejernig-DevDefined.OAuth---Etrade-c61cb85.zip
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{18FA1D05-4CA9-4168-93A4-D6170F8B3D4B}"
+	ProjectSection(SolutionItems) = preProject
+		Docs\API_Technical_Documentation.pdf = Docs\API_Technical_Documentation.pdf
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{A2878452-46BA-4662-8CF9-5B0BFE93933A}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Stocks.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{C0DA4575-E918-438C-8C27-C67B00931B6F}.Release|x86.ActiveCfg = Release|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{CAB4B0A3-FF76-4A1B-92FD-602A8497E732}.Release|x86.ActiveCfg = Release|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|x86.ActiveCfg = Release|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A2878452-46BA-4662-8CF9-5B0BFE93933A}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{725AFBEF-40D4-4133-9A62-E2122FE878DC} = {28C69102-D8A8-4F42-AF94-687E4027FDF4}
+	EndGlobalSection
+EndGlobal

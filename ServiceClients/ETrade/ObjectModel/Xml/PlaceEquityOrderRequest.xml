@@ -1,0 +1,18 @@
+﻿<EquityOrderRequest>
+  <accountId>83495799</accountId>
+  <clientOrderId>45</clientOrderId>
+  <limitPrice>3</limitPrice>
+  <previewId></previewId>
+  <stopPrice></stopPrice>
+  <stopLimitPrice></stopLimitPrice>
+  <allOrNone></allOrNone>
+  <quantity>4</quantity>
+  <reserveOrder></reserveOrder>
+  <reserveQuantity></reserveQuantity>
+  <symbol>ETFC</symbol>
+  <orderAction>BUY</orderAction>
+  <priceType>LIMIT</priceType>
+  <routingDestination></routingDestination>
+  <marketSession>REGULAR</marketSession>
+  <orderTerm>GOOD_FOR_DAY</orderTerm>
+</EquityOrderRequest>

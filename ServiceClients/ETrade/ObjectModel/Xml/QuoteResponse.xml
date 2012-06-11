@@ -1,0 +1,267 @@
+﻿<QuoteResponse>
+  <QuoteData>
+    <all>
+      <adjNonAdjFlag>false</adjNonAdjFlag>
+      <annualDividend>0.0</annualDividend>
+      <ask>624.0</ask>
+      <askExchange>K</askExchange>
+      <askSize>200</askSize>
+      <askTime>20:00:00 EDT 04-15-2012</askTime>
+      <bid>563.0</bid>
+      <bidExchange>K</bidExchange>
+      <bidSize>100</bidSize>
+      <bidTime>20:00:00 EDT 04-15-2012</bidTime>
+      <chgClose>-28.00999999999999</chgClose>
+      <chgClosePrcn>-4.3</chgClosePrcn>
+      <companyName>GOOGLE INC</companyName>
+      <daysToExpiration>0</daysToExpiration>
+      <dirLast>D</dirLast>
+      <dividend>0.0</dividend>
+      <eps>29.76</eps>
+      <estEarnings>42.604</estEarnings>
+      <exDivDate></exDivDate>
+      <exchgLastTrade>NASDAQ</exchgLastTrade>
+      <fsi>N</fsi>
+      <high>648.99</high>
+      <high52>670.25</high52>
+      <highAsk>657.76</highAsk>
+      <highBid>656.06</highBid>
+      <lastTrade>623.0</lastTrade>
+      <low>623.54</low>
+      <low52>473.02</low52>
+      <lowAsk>622.2</lowAsk>
+      <lowBid>604.0</lowBid>
+      <numTrades>58314</numTrades>
+      <open>647.75</open>
+      <openInterest>0</openInterest>
+      <optionStyle></optionStyle>
+      <optionUnderlier></optionUnderlier>
+      <prevClose>651.01</prevClose>
+      <prevDayVolume>5756582</prevDayVolume>
+      <primaryExchange>Q </primaryExchange>
+      <symbolDesc>GOOGLE INC</symbolDesc>
+      <todayClose>0.0</todayClose>
+      <totalVolume>8163012</totalVolume>
+      <upc>0</upc>
+      <volume10Day>2513921</volume10Day>
+    </all>
+    <dateTime>19:59:33 EDT 04-15-2012</dateTime>
+    <product>
+      <symbol>GOOG</symbol>
+      <type>EQ</type>
+      <exchange>Q </exchange>
+    </product>
+  </QuoteData>
+  <QuoteData>
+    <all>
+      <adjNonAdjFlag>false</adjNonAdjFlag>
+      <annualDividend>0.28</annualDividend>
+      <ask>55.5</ask>
+      <askExchange>P</askExchange>
+      <askSize>1300</askSize>
+      <askTime>20:00:00 EDT 04-15-2012</askTime>
+      <bid>51.08</bid>
+      <bidExchange>P</bidExchange>
+      <bidSize>200</bidSize>
+      <bidTime>20:00:00 EDT 04-15-2012</bidTime>
+      <chgClose>-1.848000000000006</chgClose>
+      <chgClosePrcn>-3.4</chgClosePrcn>
+      <companyName>HELMERICH &amp; PAYNE INC COM</companyName>
+      <daysToExpiration>0</daysToExpiration>
+      <dirLast>U</dirLast>
+      <dividend>0.07</dividend>
+      <eps>3.99</eps>
+      <estEarnings>5.09</estEarnings>
+      <exDivDate>05/11/2012</exDivDate>
+      <exchgLastTrade>NASDAQ Third Market</exchgLastTrade>
+      <fsi>N</fsi>
+      <high>54.08</high>
+      <high52>73.4</high52>
+      <highAsk>58.82</highAsk>
+      <highBid>54.0</highBid>
+      <lastTrade>52.532</lastTrade>
+      <low>52.15</low>
+      <low52>35.58</low52>
+      <lowAsk>52.16</lowAsk>
+      <lowBid>51.08</lowBid>
+      <numTrades>7812</numTrades>
+      <open>54.03</open>
+      <openInterest>0</openInterest>
+      <optionStyle></optionStyle>
+      <optionUnderlier></optionUnderlier>
+      <prevClose>54.38</prevClose>
+      <prevDayVolume>1306449</prevDayVolume>
+      <primaryExchange>N </primaryExchange>
+      <symbolDesc>HELMERICH &amp; PAYNE INC COM</symbolDesc>
+      <todayClose>52.22</todayClose>
+      <totalVolume>1048428</totalVolume>
+      <upc>0</upc>
+      <volume10Day>1711703</volume10Day>
+    </all>
+    <dateTime>18:17:53 EDT 04-15-2012</dateTime>
+    <product>
+      <symbol>HP</symbol>
+      <type>EQ</type>
+      <exchange>N </exchange>
+    </product>
+  </QuoteData>
+  <QuoteData>
+    <all>
+      <adjNonAdjFlag>false</adjNonAdjFlag>
+      <annualDividend>0.8</annualDividend>
+      <ask>31.98</ask>
+      <askExchange>K</askExchange>
+      <askSize>100</askSize>
+      <askTime>20:00:00 EDT 04-15-2012</askTime>
+      <bid>30.8</bid>
+      <bidExchange>K</bidExchange>
+      <bidSize>200</bidSize>
+      <bidTime>20:00:00 EDT 04-15-2012</bidTime>
+      <chgClose>-0.10500000000000043</chgClose>
+      <chgClosePrcn>-0.34</chgClosePrcn>
+      <companyName>MICROSOFT CORP</companyName>
+      <daysToExpiration>0</daysToExpiration>
+      <dirLast>U</dirLast>
+      <dividend>0.2</dividend>
+      <eps>2.75</eps>
+      <estEarnings>2.687</estEarnings>
+      <exDivDate>05/15/2012</exDivDate>
+      <exchgLastTrade>NASDAQ</exchgLastTrade>
+      <fsi>N</fsi>
+      <high>31.16</high>
+      <high52>32.95</high52>
+      <highAsk>31.25</highAsk>
+      <highBid>31.15</highBid>
+      <lastTrade>30.87</lastTrade>
+      <low>30.72</low>
+      <low52>23.65</low52>
+      <lowAsk>30.73</lowAsk>
+      <lowBid>30.58</lowBid>
+      <numTrades>108890</numTrades>
+      <open>30.89</open>
+      <openInterest>0</openInterest>
+      <optionStyle></optionStyle>
+      <optionUnderlier></optionUnderlier>
+      <prevClose>30.975</prevClose>
+      <prevDayVolume>38306010</prevDayVolume>
+      <primaryExchange>Q </primaryExchange>
+      <symbolDesc>MICROSOFT CORP</symbolDesc>
+      <todayClose>0.0</todayClose>
+      <totalVolume>39749525</totalVolume>
+      <upc>0</upc>
+      <volume10Day>41374728</volume10Day>
+    </all>
+    <dateTime>19:51:46 EDT 04-15-2012</dateTime>
+    <product>
+      <symbol>MSFT</symbol>
+      <type>EQ</type>
+      <exchange>Q </exchange>
+    </product>
+  </QuoteData>
+</QuoteResponse>
+
+
+<!--<QuoteResponse>
+  <QuoteData>
+    <all>
+      <adjNonAdjFlag>false</adjNonAdjFlag>
+      <annualDividend>0.0</annualDividend>
+      <ask>579.4</ask>
+      <askExchange>I</askExchange>
+      <askSize>100</askSize>
+      <askTime>18:49:23 EST 03-12-2010</askTime>
+      <beta>0.92</beta>
+      <bid>578.79</bid>
+      <bidExchange>Q</bidExchange>
+      <bidSize>100</bidSize>
+      <bidTime>18:49:23 EST 03-12-2010</bidTime>
+      <companyName>GOOGLE INC</companyName>
+      <daysToExpiration>0</daysToExpiration>
+      <dirLast>D</dirLast>
+      <dividend>0.0</dividend>
+      <eps>20.41</eps>
+      <estEarnings>22.754</estEarnings>
+      <exDivDate/>
+      <exchgLastTrade>NASDAQ</exchgLastTrade>
+      <fsi>N</fsi>
+      <high>588.275</high>
+      <high52>629.51</high52>
+      <highAsk>590.0</highAsk>
+      <highBid>588.65</highBid>
+      <lastTrade>578.78</lastTrade>
+      <low>578.78</low>
+      <low52>294.25</low52>
+      <lowAsk>578.79</lowAsk>
+      <lowBid>572.21</lowBid>
+      <numTrades>18037</numTrades>
+      <open>587.7</open>
+      <openInterest>0</openInterest>
+      <optionStyle/>
+      <optionUnderlier/>
+      <prevClose>581.14</prevClose>
+      <prevDayVolume>1550127</prevDayVolume>
+      <primaryExchange>Q</primaryExchange>
+      <symbolDesc>GOOGLE INC</symbolDesc>
+      <todayClose>579.54</todayClose>
+      <totalVolume>2755015</totalVolume>
+      <upc>0</upc>
+      <volume10Day>2010351</volume10Day>
+    </all>
+    <dateTime>18:47:21 EST 03-12-2010</dateTime>
+    <product>
+      <symbol>GOOG</symbol>
+      <type>EQ</type>
+    </product>
+  </QuoteData>
+  <QuoteData>
+    <all>
+      <adjNonAdjFlag>false</adjNonAdjFlag>
+      <annualDividend>0.0</annualDividend>
+      <ask>1.65</ask>
+      <askExchange>Q</askExchange>
+      <askSize>2000</askSize>
+      <askTime>18:50:42 EST 03-12-2010</askTime>
+      <beta>1.9</beta>
+      <bid>1.64</bid>
+      <bidExchange>Q</bidExchange>
+      <bidSize>30300</bidSize>
+      <bidTime>18:50:42 EST 03-12-2010</bidTime>
+      <companyName>E*TRADE FINANCIAL CORP</companyName>
+      <daysToExpiration>0</daysToExpiration>
+      <dirLast>D</dirLast>
+      <dividend>0.0</dividend>
+      <eps>-1.18</eps>
+      <estEarnings>-0.841</estEarnings>
+      <exDivDate/>
+      <exchgLastTrade>Pacific</exchgLastTrade>
+      <fsi>N</fsi>
+      <high>1.67</high>
+      <high52>2.9</high52>
+      <highAsk>1.79</highAsk>
+      <highBid>1.67</highBid>
+      <lastTrade>1.64</lastTrade>
+      <low>1.64</low>
+      <low52>0.59</low52>
+      <lowAsk>1.65</lowAsk>
+      <lowBid>1.58</lowBid>
+      <numTrades>14559</numTrades>
+      <open>1.67</open>
+      <openInterest>0</openInterest>
+      <optionStyle/>
+      <optionUnderlier/>
+      <prevClose>1.67</prevClose>
+      <prevDayVolume>134914923</prevDayVolume>
+      <primaryExchange>Q</primaryExchange>
+      <symbolDesc>E*TRADE FINANCIAL CORP</symbolDesc>
+      <todayClose>1.65</todayClose>
+      <totalVolume>23968286</totalVolume>
+      <upc>0</upc>
+      <volume10Day>50286144</volume10Day>
+    </all>
+    <dateTime>19:03:27 EST 03-12-2010</dateTime>
+    <product>
+      <symbol>ETFC</symbol>
+      <type>EQ</type>
+    </product>
+  </QuoteData>
+</QuoteResponse>-->
