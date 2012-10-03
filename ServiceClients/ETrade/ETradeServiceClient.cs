@@ -51,18 +51,10 @@ namespace Stocks.ServiceClients.ETrade
         // Quotes          4 incoming requests per second per user
         // Notifications   2 incoming requests per second (per user?)
         private static TokenBucket
-            _ordersTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1600)),
-            _accountsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1600)),
-            _quotesTokenBucket = new TokenBucket(4, new TimeSpan(0, 0, 0, 0, 1600)),
-            _notificationsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1600));
-
-        private ETradeClient()
-        {
-            ServicePointManager.UseNagleAlgorithm = false;
-            //ServicePointManager.Expect100Continue = true;
-            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3;
-            //ServicePointManager.
-        }
+            _ordersTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1500)),
+            _accountsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1500)),
+            _quotesTokenBucket = new TokenBucket(4, new TimeSpan(0, 0, 0, 0, 1500)),
+            _notificationsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1500));
 
         private static bool AllwaysGoodCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors policyErrors)
         {
@@ -70,7 +62,6 @@ namespace Stocks.ServiceClients.ETrade
         }
 
         public ETradeClient(ConsumerToken consumerToken, AccessToken accessToken = null, bool productionMode = false)
-            : this()
         {
             _consumerToken = consumerToken;
 
