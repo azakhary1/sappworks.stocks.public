@@ -51,15 +51,10 @@ namespace Stocks.ServiceClients.ETrade
         // Quotes          4 incoming requests per second per user
         // Notifications   2 incoming requests per second (per user?)
         private static TokenBucket
-            _ordersTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1500)),
-            _accountsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1500)),
-            _quotesTokenBucket = new TokenBucket(4, new TimeSpan(0, 0, 0, 0, 1500)),
-            _notificationsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 0, 1500));
-
-        private static bool AllwaysGoodCertificate(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors policyErrors)
-        {
-            return true;
-        }
+            _ordersTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 150)),
+            _accountsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 150)),
+            _quotesTokenBucket = new TokenBucket(4, new TimeSpan(0, 0, 0, 1, 150)),
+            _notificationsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 150));
 
         public ETradeClient(ConsumerToken consumerToken, AccessToken accessToken = null, bool productionMode = false)
         {
@@ -175,7 +170,28 @@ namespace Stocks.ServiceClients.ETrade
             {
                 using (var responseStream = _session.Request(_accessToken).Get().ForUrl(url).ToWebResponse().GetResponseStream())
                 {
-                    return (T)serializer.Deserialize(responseStream);
+                    try
+                    {
+                        return (T)serializer.Deserialize(responseStream);
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        if (ex.InnerException is XmlException)
+                        {
+                            using (StreamReader streamReader = new StreamReader(responseStream))
+                            {
+                                throw new XmlFormatException(
+                                    ex.InnerException.Message,
+                                    streamReader.ReadToEnd(),
+                                    ex.InnerException
+                                );
+                            }
+                        }
+                        else
+                        {
+                            throw;
+                        }
+                    }
                 }
             }
             catch(DevDefined.OAuth.Framework.OAuthException ex)

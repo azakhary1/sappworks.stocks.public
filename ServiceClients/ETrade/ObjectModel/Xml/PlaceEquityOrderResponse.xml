@@ -1,0 +1,26 @@
+﻿<PlaceEquityOrderResponse>
+  <equityOrderResponse>
+    <accountId>83495799</accountId>
+    <allOrNone>false</allOrNone>
+    <estimatedCommission>7.99</estimatedCommission>
+    <estimatedTotalAmount>19.99</estimatedTotalAmount>
+    <messageList>
+      <message>
+        <msgDesc>Your order was successfully entered during market hours.</msgDesc>
+        <msgCode>1026</msgCode>
+      </message>
+    </messageList>
+    <orderNum>13</orderNum>
+    <orderTime>1269423948429</orderTime>
+    <quantity>4</quantity>
+    <reserveOrder>false</reserveOrder>
+    <reserveQuantity>0</reserveQuantity>
+    <orderTerm>GOOD_FOR_DAY</orderTerm>
+    <limitPrice>3</limitPrice>
+    <stopPrice>0</stopPrice>
+    <symbolDesc>E TRADE FINANCIAL CORP COM</symbolDesc>
+    <symbol>ETFC</symbol>
+    <orderAction>BUY</orderAction>
+    <priceType>LIMIT</priceType>
+  </equityOrderResponse>
+</PlaceEquityOrderResponse>

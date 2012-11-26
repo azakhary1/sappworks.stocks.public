@@ -68,20 +68,6 @@ namespace Stocks.ServiceClients.ETrade
 
                         return;
                     }
-                    //else if (_tokens < _capacity)
-                    //{
-                    //    _tokens++;
-
-                    //    return;
-                    //}
-                    //else
-                    //{
-                    //    // if we get here the bucket is full. wait for the next bucket
-                    //    Thread.Sleep((int)Math.Max(bucketUpperBound.Subtract(now).TotalMilliseconds, 1d));
-
-                    //    // try to consume one again
-                    //    Consume();
-                    //}
                 }
             }
         }

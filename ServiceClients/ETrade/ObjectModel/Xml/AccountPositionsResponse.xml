@@ -1,0 +1,55 @@
+﻿<AccountPositionsResponse>
+  <accountId>83353535</accountId>
+  <count>4</count>
+  <marker/>
+  <AccountPositions>
+    <AccountPosition>
+      <costBasis>3.96</costBasis>
+      <description>CITIGROUP INC COM</description>
+      <longOrShort>LONG</longOrShort>
+      <marginable>true</marginable>
+      <productId>
+        <symbol>C</symbol>
+        <typeCode>EQ</typeCode>
+      </productId>
+      <qty>10</qty>
+      <marketValue>39.60</marketValue>
+    </AccountPosition>
+    <AccountPosition>
+      <costBasis>25.87</costBasis>
+      <description>CISCO SYS INC COM</description>
+      <longOrShort>LONG</longOrShort>
+      <marginable>true</marginable>
+      <productId>
+        <symbol>CSCO</symbol>
+        <typeCode>EQ</typeCode>
+      </productId>
+      <qty>3</qty>
+      <marketValue>77.62</marketValue>
+    </AccountPosition>
+    <AccountPosition>
+      <costBasis>1.67</costBasis>
+      <description>E TRADE FINANCIAL CORP COM</description>
+      <longOrShort>LONG</longOrShort>
+      <marginable>true</marginable>
+      <productId>
+        <symbol>ETFC</symbol>
+        <typeCode>EQ</typeCode>
+      </productId>
+      <qty>3</qty>
+      <marketValue>5.01</marketValue>
+    </AccountPosition>
+    <AccountPosition>
+      <costBasis>576.45</costBasis>
+      <description>GOOGLE INC CL A</description>
+      <longOrShort>SHORT</longOrShort>
+      <marginable>false</marginable>
+      <productId>
+        <symbol>GOOG</symbol>
+        <typeCode>EQ</typeCode>
+      </productId>
+      <qty>-1</qty>
+      <marketValue>-576.45</marketValue>
+    </AccountPosition>
+  </AccountPositions>
+</AccountPositionsResponse>

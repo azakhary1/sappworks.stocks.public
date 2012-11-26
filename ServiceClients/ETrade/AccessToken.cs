@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using DevDefined.OAuth.Framework;
 
-using COM = Stocks.Common;
-
 namespace Stocks.ServiceClients.ETrade
 {
     /// <summary>
@@ -17,10 +15,10 @@ namespace Stocks.ServiceClients.ETrade
 
     public static class AccessTokenExtensions
     {
-        public static COM.OAuthToken ToAccessToken(this AccessToken value)
+        public static Stocks.Common.OAuthToken ToAccessToken(this AccessToken value)
         {
             return
-                new COM.OAuthToken
+                new Stocks.Common.OAuthToken
                 {
                     Token = value.Token,
                     Secret = value.TokenSecret
