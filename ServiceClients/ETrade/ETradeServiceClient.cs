@@ -178,6 +178,8 @@ namespace Stocks.ServiceClients.ETrade
                     {
                         if (ex.InnerException is XmlException)
                         {
+                            responseStream.Position = 0;
+
                             using (StreamReader streamReader = new StreamReader(responseStream))
                             {
                                 throw new XmlFormatException(
