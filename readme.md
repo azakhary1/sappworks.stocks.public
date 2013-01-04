@@ -9,6 +9,7 @@ This set of libraries is used in production in my trading automation, so the imp
 
 ##Examples
 ```csharp
+  // create the service client
   var client = new StocksRepository(_consumerToken, _accessToken);
   
   // get all accounts
@@ -18,6 +19,7 @@ This set of libraries is used in production in my trading automation, so the imp
 ```csharp
   int accountId = 30049872;
   
+  // create some orders
   var orders = 
       new List<Order>
       {
@@ -37,7 +39,7 @@ This set of libraries is used in production in my trading automation, so the imp
           }
      }; 
 
-  // execute some orders
+  // execute them
   var response = client.ExecuteOrders(accountId, orders);
 ```
 
