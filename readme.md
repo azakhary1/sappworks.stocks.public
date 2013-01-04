@@ -3,7 +3,7 @@
 This is a not-quite-feature-complete fully managed client for the ETrade API.  It does only a fraction of what the API offers, namely:
  - Accounts & Balances
  - Market Data
- - Basic Order Execution
+ - Basic Order Execution (just limit orders right now)
 
 This set of libraries is used in production in my trading automation, so the implementations do work, though not all of them may be designed well...  
 
