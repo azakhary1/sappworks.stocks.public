@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace Stocks.Common
 {
+    using System;
+
     public static class DateHelpers
     {
         public static bool IsTradingHour(this DateTime value)

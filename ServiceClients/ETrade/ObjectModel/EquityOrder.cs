@@ -1,36 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace Stocks.ServiceClients.ETrade.ObjectModel
 {
-    public partial class EquityOrderRequest : IResource, IRequest
+    public partial class EquityOrderRequest : IResource, IRequest, IBelongToOrderService
     {
-        #region IRequest stuff
-
         string IRequest.ToXml()
         {
-            //return "<PlaceEquityOrder xmlns=\"http://order.etws.etrade.com\">" +
-            //    "<EquityOrderRequest>" +
-            //        "<accountId>83495799</accountId><clientOrderId>45</clientOrderId>" +
-            //    "<limitPrice>3</limitPrice>" +
-            //    "<previewId></previewId>" +
-            //    "<stopPrice></stopPrice>" +
-            //    "<stopLimitPrice></stopLimitPrice>" +
-            //    "<allOrNone></allOrNone>" +
-            //    "<quantity>4</quantity>" +
-            //    "<reserveOrder></reserveOrder>" +
-            //    "<reserveQuantity></reserveQuantity>" +
-            //    "<symbol>ETFC</symbol>" +
-            //    "<orderAction>BUY</orderAction>" +
-            //    "<priceType>LIMIT</priceType>" +
-            //    "<routingDestination></routingDestination>" +
-            //    "<marketSession>REGULAR</marketSession>" +
-            //    "<orderTerm>GOOD_FOR_DAY</orderTerm>" +
-            //"</EquityOrderRequest>" +
-            //"</PlaceEquityOrder>";
-
             return string.Format(
                 "<PlaceEquityOrder xmlns=\"http://order.etws.etrade.com\">" + 
                 "  <EquityOrderRequest>" + 
@@ -64,10 +38,6 @@ namespace Stocks.ServiceClients.ETrade.ObjectModel
             );
         }
 
-        #endregion
-
-        #region IResource Stuff
-
         private const string ResourceNameFormatString = "/order/rest/placeequityorder";
         private const string SandboxResourceNameFormatString = "/order/sandbox/rest/placeequityorder";
 
@@ -75,7 +45,5 @@ namespace Stocks.ServiceClients.ETrade.ObjectModel
         {
             return productionMode ? ResourceNameFormatString : SandboxResourceNameFormatString;
         }
-
-        #endregion
     }
 }

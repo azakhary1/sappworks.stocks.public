@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.ComponentModel;
-
+﻿
 namespace Stocks.Common
 {
+    using System.ComponentModel;
+
     public class Position : INotifyPropertyChanged
     {
-        public Position()
-        { }
-
         private string _symbol;
         public string Symbol 
         {
@@ -21,12 +15,26 @@ namespace Stocks.Common
             set
             {
                 _symbol = value;
-                this.NotifyPropertyChanged("Symbol");
+                NotifyPropertyChanged("Symbol");
             }
         }
         
         public string Description { get; set; }
-        public decimal Quantity { get; set; }
+
+        private decimal _quantity;
+        public decimal Quantity 
+        { 
+            get
+            {
+                return _quantity;
+            }
+            set
+            {
+                _quantity = value;
+                NotifyPropertyChanged("Quantity");
+                NotifyPropertyChanged("Spread");
+            }
+        }
 
         private decimal _basis;
         public decimal Basis 
@@ -40,11 +48,47 @@ namespace Stocks.Common
             {
                 _basis = value;
 
-                this.NotifyPropertyChanged("Basis");
+                NotifyPropertyChanged("Basis");
             }
         }
-        
-        public Quote Quote { get; set; }
+
+        public decimal CurrentValue
+        {
+            get
+            {
+                if (Quote != null)
+                {
+                    return Quantity * Quote.Price;
+                }
+
+                return 0m;
+            }
+        }
+
+        private Quote _quote;
+        public Quote Quote 
+        {
+            get
+            {
+                return _quote;
+            }
+            set
+            {
+                _quote = value;
+                NotifyPropertyChanged("Quote");
+                NotifyPropertyChanged("CurrentValue");
+                NotifyPropertyChanged("Spread");
+            }
+        }
+
+        public decimal Spread
+        {
+            get
+            {
+                return CurrentValue - Basis;
+            }
+        }
+
         public bool OutsandingOrdersExist { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;

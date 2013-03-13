@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace Stocks.ServiceClients.ETrade.ObjectModel
 {
-    partial class GetOrderListResponse : IResource
+    partial class GetOrderListResponse : IResource, IBelongToOrderService
     {
-        #region IResource Stuff
-
         private const string ResourceNameFormatString = "/order/rest/orderlist/{accountId}";
         private const string SandboxResourceNameFormatString = "/order/sandbox/rest/orderlist/{accountId}";
 
@@ -16,7 +10,5 @@ namespace Stocks.ServiceClients.ETrade.ObjectModel
         {
             return productionMode ? ResourceNameFormatString : SandboxResourceNameFormatString;
         }
-
-        #endregion
     }
 }

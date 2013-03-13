@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace Stocks.Common
 {
+    using System;
+
     [Serializable]
-    public class OAuthGetRequestTokenException : OAuthException
+    public class OAuthGetRequestTokenException : AuthenticationException
     {
         public OAuthGetRequestTokenException() { }
         public OAuthGetRequestTokenException(string message) : base(message) { }

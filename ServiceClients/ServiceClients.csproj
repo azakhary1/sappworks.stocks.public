@@ -36,18 +36,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.IO.Log" />
-    <Reference Include="System.Net" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ETrade\ETradeServiceClient.cs" />
+    <Compile Include="ETrade\AccessTokenExtensions.cs" />
+    <Compile Include="ETrade\ETradeClient.cs" />
     <Compile Include="ETrade\Helpers.cs" />
     <Compile Include="ETrade\AccessToken.cs" />
     <Compile Include="ETrade\ConsumerToken.cs" />
@@ -56,6 +51,7 @@
     <Compile Include="ETrade\ObjectModel\AccountPositions.cs" />
     <Compile Include="ETrade\ObjectModel\AccountList.cs" />
     <Compile Include="ETrade\ObjectModel\GeneratedClasses.cs" />
+    <Compile Include="ETrade\ObjectModel\IBelongToService.cs" />
     <Compile Include="ETrade\ObjectModel\IRequest.cs" />
     <Compile Include="ETrade\ObjectModel\IResource.cs" />
     <Compile Include="ETrade\ObjectModel\OrderList.cs" />

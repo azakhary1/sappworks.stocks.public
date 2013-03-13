@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections;
-using System.ComponentModel;
-using System.Text.RegularExpressions;
-using System.Globalization;
-
+﻿
 namespace Stocks.Common
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Globalization;
+    using System.Linq;
+    using System.Text.RegularExpressions;
+
     public static class StringHelpers
     {
         public static string ToDelimited(this IEnumerable<string> values, string delimiter)
@@ -23,7 +22,7 @@ namespace Stocks.Common
 
         /// <summary>
         /// Extension method that replaces keys in a string with the values of matching object properties.
-        /// <remarks>Uses <see cref="String.Format()"/> internally; custom formats should match those used for that method.</remarks>
+        /// <remarks>Uses String.Format() internally; custom formats should match those used for that method.</remarks>
         /// </summary>
         /// <param name="formatString">The format string, containing keys like {foo} and {foo:SomeFormat}.</param>
         /// <param name="injectionObject">The object whose properties should be injected in the string</param>
@@ -35,7 +34,7 @@ namespace Stocks.Common
 
         /// <summary>
         /// Extension method that replaces keys in a string with the values of matching dictionary entries.
-        /// <remarks>Uses <see cref="String.Format()"/> internally; custom formats should match those used for that method.</remarks>
+        /// <remarks>Uses String.Format() internally; custom formats should match those used for that method.</remarks>
         /// </summary>
         /// <param name="formatString">The format string, containing keys like {foo} and {foo:SomeFormat}.</param>
         /// <param name="dictionary">An <see cref="IDictionary"/> with keys and values to inject into the string</param>
@@ -47,22 +46,21 @@ namespace Stocks.Common
 
         /// <summary>
         /// Extension method that replaces keys in a string with the values of matching hashtable entries.
-        /// <remarks>Uses <see cref="String.Format()"/> internally; custom formats should match those used for that method.</remarks>
+        /// <remarks>Uses String.Format() internally; custom formats should match those used for that method.</remarks>
         /// </summary>
         /// <param name="formatString">The format string, containing keys like {foo} and {foo:SomeFormat}.</param>
         /// <param name="attributes">A <see cref="Hashtable"/> with keys and values to inject into the string</param>
         /// <returns>A version of the formatString string with hastable keys replaced by (formatted) key values.</returns>
         public static string Inject(this string formatString, Hashtable attributes)
         {
-            string result = formatString;
-            if (attributes == null || formatString == null)
-                return result;
+            var result = formatString;
 
-            foreach (string attributeKey in attributes.Keys)
+            if (attributes == null || formatString == null)
             {
-                result = result.InjectSingleValue(attributeKey, attributes[attributeKey]);
+                return result;
             }
-            return result;
+
+            return attributes.Keys.Cast<string>().Aggregate(result, (current, attributeKey) => current.InjectSingleValue(attributeKey, attributes[attributeKey]));
         }
 
         /// <summary>
@@ -77,12 +75,12 @@ namespace Stocks.Common
             string result = formatString;
             //regex replacement of key with value, where the generic key format is:
             //Regex foo = new Regex("{(foo)(?:}|(?::(.[^}]*)}))");
-            Regex attributeRegex = new Regex("{(" + key + ")(?:}|(?::(.[^}]*)}))");  //for key = foo, matches {foo} and {foo:SomeFormat}
+            var attributeRegex = new Regex("{(" + key + ")(?:}|(?::(.[^}]*)}))");  //for key = foo, matches {foo} and {foo:SomeFormat}
 
             //loop through matches, since each key may be used more than once (and with a different format string)
             foreach (Match m in attributeRegex.Matches(formatString))
             {
-                string replacement = m.ToString();
+                string replacement;
                 if (m.Groups[2].Length > 0) //matched {foo:SomeFormat}
                 {
                     //do a double string.Format - first to build the proper format string, and then to format the replacement value

@@ -9,33 +9,37 @@
 
 */
 
-using System;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Xml.Linq;
-using System.Collections.Generic;
-
-using Stocks.ServiceClients.Yahoo.ObjectModel;
-
 namespace Stocks.ServiceClients.Yahoo
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Xml.Linq;
+
+    using Stocks.ServiceClients.Yahoo.ObjectModel;
+
     public class YahooClient
     {
-        private const string BASE_URL = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20({0})&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
+        private const string BaseUrl = "http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20({0})&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys";
 
         public static IEnumerable<Quote> GetQuotes(IEnumerable<string> symbols)
         {
             string symbolList = String.Join("%2C", symbols.Select(s => "%22" + s + "%22").ToArray());
-            string url = string.Format(BASE_URL,symbolList);
+            string url = string.Format(BaseUrl,symbolList);
             
             XDocument doc = XDocument.Load(url);
-            
+
+            Debug.Assert(doc.Root != null, "doc.Root != null");
+
             var results = doc.Root.Element("results").Elements("quote");
 
             var quotes = new List<Quote>();
 
             foreach(var q in results)
             {
+                Debug.Assert(q != null, "q != null");
+
                 quotes.Add(
                     new Quote
                     {

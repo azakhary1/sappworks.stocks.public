@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-
+﻿
 namespace Stocks.ServiceClients.ETrade
 {
+    using System;
+    using System.Threading;
+
     public class TokenBucket
     {
-        readonly object _locker = new object();
-        int _tokens,
-            _capacity;
-        TimeSpan _refillInterval;
-        DateTime _lastGet;
-        bool _bucketWasReset;
+        private readonly object _locker = new object();
+        private int _tokens;
+        private readonly int _capacity;
+        private readonly TimeSpan _refillInterval;
+        private DateTime _lastGet;
+        private bool _bucketWasReset;
 
         public TokenBucket(int capacity, TimeSpan refillInterval)
         {
@@ -40,14 +38,12 @@ namespace Stocks.ServiceClients.ETrade
 
                         return;
                     }
-                    else
-                    {
-                        // if we get here the bucket is full. wait for the next bucket
-                        Thread.Sleep((int)Math.Max(bucketUpperBound.Subtract(now).TotalMilliseconds, 1d));
 
-                        // try to consume one again
-                        Consume();
-                    }
+                    // if we get here the bucket is full. wait for the next bucket
+                    Thread.Sleep((int)Math.Max(bucketUpperBound.Subtract(now).TotalMilliseconds, 1d));
+
+                    // try to consume one again
+                    Consume();
                 }
                 else
                 {
@@ -65,8 +61,6 @@ namespace Stocks.ServiceClients.ETrade
 
                         // indicate we reset the bucket this round
                         _bucketWasReset = true;
-
-                        return;
                     }
                 }
             }

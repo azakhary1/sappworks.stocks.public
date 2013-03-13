@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace Stocks.ServiceClients.ETrade.ObjectModel
 {
-    partial class AccountListResponse : IResource
+    partial class AccountListResponse : IResource, IBelongToAccountService
     {
-        #region IResource Stuff
-
         private const string ResourceNameFormatString = "/accounts/rest/accountlist";
         private const string SandboxResourceNameFormatString = "/accounts/sandbox/rest/accountlist";
 
@@ -16,7 +10,5 @@ namespace Stocks.ServiceClients.ETrade.ObjectModel
         {
             return productionMode ? ResourceNameFormatString : SandboxResourceNameFormatString;
         }
-
-        #endregion
     }
 }

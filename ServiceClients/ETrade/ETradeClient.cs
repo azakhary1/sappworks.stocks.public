@@ -1,42 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.Web;
-using System.Collections;
-using System.Xml.Serialization;
-using System.Runtime.Serialization;
-
-using System.Xml.Linq;
-using System.Xml;
-using System.IO;
-using System.Security.Cryptography.X509Certificates;
-using System.Net.Security;
-
-using DevDefined.OAuth.Consumer;
-using DevDefined.OAuth.Framework;
-
-using Stocks.ServiceClients.ETrade.ObjectModel;
-using Stocks.Common;
-using System.Collections.Specialized;
-
+﻿
 namespace Stocks.ServiceClients.ETrade
 {
+    using System;
+    using System.IO;
+    using System.Net;
+    using System.Text;
+    using System.Xml.Serialization;
+
+    using DevDefined.OAuth.Consumer;
+    using DevDefined.OAuth.Framework;
+
+    using Stocks.Common;
+    using Stocks.ServiceClients.ETrade.ObjectModel;
+
     public class ETradeClient
     {
         private const string
-            REQUEST_URL = "https://etws.etrade.com/oauth/request_token",
-            AUTHORIZE_URL = "https://us.etrade.com/e/t/etws/authorize",
-            ACCESS_URL = "https://etws.etrade.com/oauth/access_token",
+            RequestUrl = "https://etws.etrade.com/oauth/request_token",
+            AuthorizeUrl = "https://us.etrade.com/e/t/etws/authorize",
+            AccessUrl = "https://etws.etrade.com/oauth/access_token",
             DataUrl = "https://etws.etrade.com",
             SandboxDataUrl = "https://etwssandbox.etrade.com";
 
-        private OAuthSession _session;
-        private OAuthConsumerContext _consumerContext;
+        private readonly OAuthSession _session;
+        private readonly OAuthConsumerContext _consumerContext;
         private RequestToken _requestToken;
-        private ConsumerToken _consumerToken;
-        private bool _productionMode;
+        private readonly ConsumerToken _consumerToken;
+        private readonly bool _productionMode;
 
         private AccessToken _accessToken;
         public AccessToken AccessToken 
@@ -49,12 +39,10 @@ namespace Stocks.ServiceClients.ETrade
         // Orders          2 incoming requests per second per user
         // Accounts        2 incoming requests per second per user
         // Quotes          4 incoming requests per second per user
-        // Notifications   2 incoming requests per second (per user?)
-        private static TokenBucket
-            _ordersTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 150)),
-            _accountsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 150)),
-            _quotesTokenBucket = new TokenBucket(4, new TimeSpan(0, 0, 0, 1, 150)),
-            _notificationsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 150));
+        private readonly static TokenBucket
+            _ordersTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 30)),
+            _accountsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 28)),
+            _quotesTokenBucket = new TokenBucket(4, new TimeSpan(0, 0, 0, 1, 30));
 
         public ETradeClient(ConsumerToken consumerToken, AccessToken accessToken = null, bool productionMode = false)
         {
@@ -69,7 +57,7 @@ namespace Stocks.ServiceClients.ETrade
                 CallBack = "oob"
             };
 
-            _session = new OAuthSession(_consumerContext, REQUEST_URL, AUTHORIZE_URL, ACCESS_URL);
+            _session = new OAuthSession(_consumerContext, RequestUrl, AuthorizeUrl, AccessUrl);
 
             _productionMode = productionMode;
             _accessToken = accessToken;
@@ -81,7 +69,7 @@ namespace Stocks.ServiceClients.ETrade
             if (_consumerContext == null) { throw new OAuthGetRequestTokenException("Consumer context is not set up."); }
             if (_session == null) { throw new OAuthGetRequestTokenException("OAuthSession is not estabblished"); }
 
-            var _requestToken = _session.GetRequestToken().ToRequestToken();
+            _requestToken = _session.GetRequestToken().ToRequestToken();
 
             if (_requestToken == null)
             {
@@ -119,120 +107,101 @@ namespace Stocks.ServiceClients.ETrade
             return _accessToken;
         }
 
-        public string GetAccountBalanceAsString(int accountId)
+        private static void ObeyRequestRateLimits(Type t)
         {
-            string url = GetUrl<AccountBalanceResponse>(new { accountId = accountId });
-
-            return _session.Request(_accessToken).Get().ForUrl(url).ToString();
-        }
-
-        public string GetOrders(int accountId)
-        {
-            string url = GetUrl<GetOrderListResponse>(new { accountId = accountId });
-
-            return _session.Request(_accessToken).Get().ForUrl(url).ToString();
-        }
-
-        private void ObeyRequestRateLimits(string url)
-        {
-            if (url.Contains("/accounts"))
+            if (t is IBelongToAccountService)
             {
                 // get from accounts bucket
                 _accountsTokenBucket.Consume();
             }
-            else if (url.Contains("/market"))
+            else if (t is IBelongToMarketService)
             {
                 // get from market bucket
                 _quotesTokenBucket.Consume();
             }
-            else if (url.Contains("/order"))
+            else if (t is IBelongToOrderService)
             {
                 // get from order bucket
                 _ordersTokenBucket.Consume();
-            }
-            else if (url.Contains("/notification"))
-            {
-                // get from notification bucket
-                _notificationsTokenBucket.Consume();
             }
         }
 
         public T Get<T>(object queryData = null)
             where T : IResource, new()
         {
+            var resourceType = typeof(T);
+
+            ObeyRequestRateLimits(resourceType);
+
             string url = GetUrl<T>(queryData);
 
-            ObeyRequestRateLimits(url);
-
-            var serializer = new XmlSerializer(typeof(T));
+            var serializer = new XmlSerializer(resourceType);
 
             try
             {
                 using (var responseStream = _session.Request(_accessToken).Get().ForUrl(url).ToWebResponse().GetResponseStream())
+                using (var memoryStream = new MemoryStream())
                 {
+                    if (responseStream != null) responseStream.CopyTo(memoryStream);
+
+                    memoryStream.Position = 0;
+
                     try
                     {
-                        return (T)serializer.Deserialize(responseStream);
+                        return (T)serializer.Deserialize(memoryStream);
                     }
                     catch (InvalidOperationException ex)
                     {
-                        if (ex.InnerException is XmlException)
-                        {
-                            responseStream.Position = 0;
+                        memoryStream.Position = 0;
 
-                            using (StreamReader streamReader = new StreamReader(responseStream))
-                            {
-                                throw new XmlFormatException(
-                                    ex.InnerException.Message,
-                                    streamReader.ReadToEnd(),
-                                    ex.InnerException
-                                );
-                            }
-                        }
-                        else
+                        using (var streamReader = new StreamReader(memoryStream))
                         {
-                            throw;
+                            throw new DeserializeException(
+                                ex.Message,
+                                streamReader.ReadToEnd(),
+                                ex
+                            );
                         }
                     }
                 }
             }
-            catch(DevDefined.OAuth.Framework.OAuthException ex)
+            catch(OAuthException ex)
             {
-                throw new Stocks.Common.OAuthException(ex.InnerException.Message, ex);
+                throw new AuthenticationException(ex.InnerException.Message, ex);
             }
         }
 
         public TResult Post<TRequest, TResult>(TRequest request)
             where TRequest : IResource, IRequest, new() 
         {
+            var resourceType = typeof(TResult);
+
+            ObeyRequestRateLimits(resourceType);
+
             string url = GetUrl<TRequest>();
 
-            ObeyRequestRateLimits(url);
-            
-            //var requestBody = request.ToXml();
-
-            var serializer = new XmlSerializer(typeof(TResult));
+            var serializer = new XmlSerializer(resourceType);
 
             var requestDesc = _session.Request(_accessToken).Post().ForUrl(url).GetRequestDescription();
             
-            var hwr = (HttpWebRequest)WebRequest.Create(url);
-            hwr.Method = requestDesc.Method;
+            var webRequest = (HttpWebRequest)WebRequest.Create(url);
+            webRequest.Method = requestDesc.Method;
 
             foreach (string h in requestDesc.Headers.Keys)
             {
-                hwr.Headers.Set(h, requestDesc.Headers[h]);
+                webRequest.Headers.Set(h, requestDesc.Headers[h]);
             }
 
-            hwr.ContentType = "application/xml";
+            webRequest.ContentType = "application/xml";
             var bytes = Encoding.UTF8.GetBytes(request.ToXml());
-            hwr.ContentLength = bytes.Length;
+            webRequest.ContentLength = bytes.Length;
 
-            using(Stream dataStream = hwr.GetRequestStream())
+            using(Stream dataStream = webRequest.GetRequestStream())
             {
-                dataStream.Write (bytes, 0, bytes.Length);
+                dataStream.Write(bytes, 0, bytes.Length);
             }
 
-            using (var webResponse = hwr.GetResponse())
+            using (var webResponse = webRequest.GetResponse())
             using (var responseStream = webResponse.GetResponseStream())
             {
                 return (TResult)serializer.Deserialize(responseStream);
@@ -245,22 +214,6 @@ namespace Stocks.ServiceClients.ETrade
             string resourceName = new T().GetResourceName(_productionMode);
 
             return (_productionMode ? DataUrl : SandboxDataUrl) + (queryData != null ? resourceName.Inject(queryData) : resourceName);
-        }
-
-        public XDocument GetWebResponseAsXml(HttpWebResponse response)
-        {
-            XmlReader xmlReader = XmlReader.Create(response.GetResponseStream());
-            XDocument xdoc = XDocument.Load(xmlReader);
-            xmlReader.Close();
-            return xdoc;
-        }
-
-        public string GetWebResponseAsString(HttpWebResponse response)
-        {
-            Encoding enc = System.Text.Encoding.GetEncoding(1252);
-            StreamReader loResponseStream = new
-            StreamReader(response.GetResponseStream(), enc);
-            return loResponseStream.ReadToEnd();
         }
     }
 }

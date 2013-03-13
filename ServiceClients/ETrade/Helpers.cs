@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-
-using DevDefined.OAuth.Framework;
-
-using Stocks.ServiceClients.ETrade.ObjectModel;
-
+﻿
 namespace Stocks.ServiceClients.ETrade
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+
+    using DevDefined.OAuth.Framework;
+
     public static class Helpers
     {
         public static string UrlEncode(this string value)

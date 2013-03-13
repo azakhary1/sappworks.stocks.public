@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using DevDefined.OAuth.Framework;
-
+﻿
 namespace Stocks.ServiceClients.ETrade
 {
+    using DevDefined.OAuth.Framework;
+
     public class OAuthToken : IToken
     {
         public string SessionHandle

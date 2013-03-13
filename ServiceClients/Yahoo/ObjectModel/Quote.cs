@@ -1,8 +1,8 @@
-﻿using System;
-using System.ComponentModel;
-
+﻿
 namespace Stocks.ServiceClients.Yahoo.ObjectModel
 {
+    using System;
+
     public class Quote
     {
         public string Symbol { get; set; }

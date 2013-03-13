@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Stocks;
-using Stocks.ServiceClients.ETrade.ObjectModel;
-
+﻿
 namespace Stocks.DAL
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
+
+    using Stocks.ServiceClients.ETrade.ObjectModel;
+
     static class Helpers
     {
         public static IEnumerable<EquityOrderRequest> ToEquityOrderRequest(this IEnumerable<Common.Order> orders, int accountId)
@@ -29,27 +29,21 @@ namespace Stocks.DAL
 
             if (orders != null)
             {
-                convertedOrders = new List<EquityOrderRequest>();
-
-                foreach (var o in orders)
-                {
-                    convertedOrders.Add(
-                        new EquityOrderRequest()
-                        {
-                            accountId = (uint)accountId,
-                            clientOrderId = DateTime.Now.ToFileTime().ToString(),
-                            limitPrice = o.Price,
-                            marketSession = "REGULAR",
-                            orderAction = o.IsSale ? "SELL" : "BUY",
-                            orderTerm = "GOOD_FOR_DAY",
-                            previewId = null,
-                            priceType = "LIMIT",
-                            quantity = o.Quantity,
-                            symbol = o.Symbol
-                        }
-                    );
-
-                }
+                convertedOrders = orders.Select(
+                    o => new EquityOrderRequest
+                    {
+                        accountId = (uint) accountId, 
+                        clientOrderId = DateTime.Now.ToFileTime().ToString(CultureInfo.InvariantCulture), 
+                        limitPrice = o.Price, 
+                        marketSession = "REGULAR", 
+                        orderAction = o.IsSale ? "SELL" : "BUY", 
+                        orderTerm = "GOOD_FOR_DAY", 
+                        previewId = null, 
+                        priceType = "LIMIT", 
+                        quantity = o.Quantity, 
+                        symbol = o.Symbol
+                    }
+                ).ToList();
             }
 
             return convertedOrders;
