@@ -1,4 +1,4 @@
-#The Missing ETrade C\# REST Client
+#The Missing C# E*Trade Client
 
 This is a not-quite-feature-complete fully managed client for the ETrade API.  It does only a fraction of what the API offers, namely:
  - Accounts & Balances
