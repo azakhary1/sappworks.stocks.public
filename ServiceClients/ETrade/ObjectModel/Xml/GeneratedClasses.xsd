@@ -265,8 +265,8 @@
                     <xs:element name="bidExchange" type="xs:string" />
                     <xs:element name="bidSize" type="xs:unsignedShort" />
                     <xs:element name="bidTime" type="xs:string" />
-                    <xs:element name="chgClose" type="xs:decimal" />
-                    <xs:element name="chgClosePrcn" type="xs:decimal" />
+                    <xs:element name="chgClose" type="xs:double" />
+                    <xs:element name="chgClosePrcn" type="xs:double" />
                     <xs:element name="companyName" type="xs:string" />
                     <xs:element name="daysToExpiration" type="xs:unsignedByte" />
                     <xs:element name="dirLast" type="xs:string" />

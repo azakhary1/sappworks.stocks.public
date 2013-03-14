@@ -1772,9 +1772,9 @@ namespace Stocks.ServiceClients.ETrade.ObjectModel {
         
         private string bidTimeField;
         
-        private decimal chgCloseField;
+        private double chgCloseField;
         
-        private decimal chgClosePrcnField;
+        private double chgClosePrcnField;
         
         private string companyNameField;
         
@@ -1939,7 +1939,7 @@ namespace Stocks.ServiceClients.ETrade.ObjectModel {
         }
         
         /// <remarks/>
-        public decimal chgClose {
+        public double chgClose {
             get {
                 return this.chgCloseField;
             }
@@ -1949,7 +1949,7 @@ namespace Stocks.ServiceClients.ETrade.ObjectModel {
         }
         
         /// <remarks/>
-        public decimal chgClosePrcn {
+        public double chgClosePrcn {
             get {
                 return this.chgClosePrcnField;
             }
