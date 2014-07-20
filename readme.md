@@ -43,6 +43,8 @@ This set of libraries is used in production in my trading automation, so the imp
   var response = client.ExecuteOrders(accountId, orders);
 ```
 
+See the wiki page to get started:  [Getting Started](https://github.com/bmsapp/sappworks.stocks.public/wiki/Getting-Started)
+
 ##Special Thanks
 **The OAuth Bits**  
 To handle OAuth we're using the [DevDefined ETrade Oauth branch](https://github.com/jejernig/DevDefined.OAuth---Etrade) - thanks to [jejernig](http://stackoverflow.com/users/616499/jejernig) for that!
