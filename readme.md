@@ -7,7 +7,7 @@ This is a not-quite-feature-complete fully managed client for the ETrade API.  I
 
 This set of libraries is used in production in my trading automation, so the implementations do work, though not all of them may be designed well...  
 
-##Examples
+##Example
 ```csharp
   // create the service client
   var client = new StocksRepository(_consumerToken, _accessToken);
@@ -43,7 +43,7 @@ This set of libraries is used in production in my trading automation, so the imp
   var response = client.ExecuteOrders(accountId, orders);
 ```
 
-See the wiki page to get started:  [Getting Started](https://github.com/bmsapp/sappworks.stocks.public/wiki/Getting-Started)
+See this page to get started:  [Getting Started](https://github.com/bmsapp/sappworks.stocks.public/wiki/Getting-Started)
 
 ##Special Thanks
 **The OAuth Bits**  
