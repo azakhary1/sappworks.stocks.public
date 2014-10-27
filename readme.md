@@ -48,6 +48,3 @@ See this page to get started:  [Getting Started](https://github.com/bmsapp/sappw
 ##Special Thanks
 **The OAuth Bits**  
 To handle OAuth we're using the [DevDefined ETrade Oauth branch](https://github.com/jejernig/DevDefined.OAuth---Etrade) - thanks to [jejernig](http://stackoverflow.com/users/616499/jejernig) for that!
-
-**The Missing Market Data (thanks Yahoo)**  
-After getting basic OAuth working I realized there was no way (at least no documented way) to get a moving average.  So a bit of code was ported from the [Jarloo YahooStockEngine](http://www.jarloo.com/get-near-real-time-stock-data-from-yahoo-finance/) - thanks to Kelly Elias for that!
