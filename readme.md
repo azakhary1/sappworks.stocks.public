@@ -47,4 +47,4 @@ See this page to get started:  [Getting Started](https://github.com/bmsapp/sappw
 
 ##Special Thanks
 **The OAuth Bits**  
-To handle OAuth we're using the [DevDefined ETrade Oauth branch](https://github.com/jejernig/DevDefined.OAuth---Etrade) - thanks to [jejernig](http://stackoverflow.com/users/616499/jejernig) for that!
+To [jejernig](http://stackoverflow.com/users/616499/jejernig) for [DevDefined.OAuth.Etrade](https://github.com/jejernig/DevDefined.OAuth---Etrade/network).  Excellent work!
