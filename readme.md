@@ -47,5 +47,3 @@ See this page to get started:  [Getting Started](https://github.com/bmsapp/sappw
 
 ##Special Thanks
 To [jejernig](http://stackoverflow.com/users/616499/jejernig) for [DevDefined.OAuth.Etrade](https://github.com/jejernig/DevDefined.OAuth---Etrade/network).  Excellent work!
-
-To Chris Benshoof for keeping the fire.
