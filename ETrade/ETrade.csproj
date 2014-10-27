@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E2E4FD35-C6CC-4781-8A48-426FE347E85B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sappworks.Stocks.ETrade</RootNamespace>
+    <AssemblyName>Sappworks.Stocks.ETrade</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevDefined.OAuth">
+      <HintPath>..\Dependencies\OAuth\DevDefined.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq">
+      <HintPath>..\packages\morelinq.1.1.0\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\AccessToken.cs" />
+    <Compile Include="Models\AccessTokenExtensions.cs" />
+    <Compile Include="Models\ConsumerToken.cs" />
+    <Compile Include="ETradeClient.cs" />
+    <Compile Include="Models\OAuthTokenExtensions.cs" />
+    <Compile Include="Models\AccountBalance.cs" />
+    <Compile Include="Models\AccountList.cs" />
+    <Compile Include="Models\AccountPositions.cs" />
+    <Compile Include="Models\EquityOrder.cs" />
+    <Compile Include="Models\GeneratedClasses.cs" />
+    <Compile Include="Models\IBelongToService.cs" />
+    <Compile Include="Models\IRequest.cs" />
+    <Compile Include="Models\IResource.cs" />
+    <Compile Include="Models\OrderList.cs" />
+    <Compile Include="Models\Quote.cs" />
+    <Compile Include="Models\OAuthToken.cs" />
+    <Compile Include="Models\OrderExtensions.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteTypeExtensions.cs" />
+    <Compile Include="Models\RequestToken.cs" />
+    <Compile Include="StringExtensions.cs" />
+    <Compile Include="TokenBucket.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\Xml\AccountBalanceResponse.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Models\Xml\AccountListResponse.xml" />
+    <Content Include="Models\Xml\AccountPositionsResponse.xml" />
+    <Content Include="Models\Xml\OrderListResponse.xml" />
+    <Content Include="Models\Xml\PlaceEquityOrderRequest.xml" />
+    <Content Include="Models\Xml\PlaceEquityOrderResponse.xml" />
+    <Content Include="Models\Xml\QuoteResponse.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Xml\GeneratedClasses.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{c0da4575-e918-438c-8c27-c67b00931b6f}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v7.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"
+
+rem in VS 2012 use below:
+rem "$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="AccountBalanceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="accountId" type="xs:unsignedInt" />
+        <xs:element name="accountType" type="xs:string" />
+        <xs:element name="optionLevel" type="xs:string" />
+        <xs:element name="accountBalance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="cashAvailableForWithdrawal" type="xs:double" />
+              <xs:element name="netAccountValue" type="xs:double" />
+              <xs:element name="netCash" type="xs:double" />
+              <xs:element name="sweepDepositAmount" type="xs:double" />
+              <xs:element name="totalLongValue" type="xs:double" />
+              <xs:element name="totalSecuritiesMktValue" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="marginAccountBalance">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="dtBalance">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="dtCashBalance" type="xs:double" />
+                    <xs:element name="dtMarginBalance" type="xs:double" />
+                    <xs:element name="dtMarginableSecurities" type="xs:double" />
+                    <xs:element name="dtNonMarginableSecuritiesAndOptions" type="xs:double" />
+                    <xs:element name="dtStatus" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="fedCall" type="xs:double" />
+              <xs:element name="marginBalance" type="xs:double" />
+              <xs:element name="marginBalanceWithdrawal" type="xs:double" />
+              <xs:element name="marginEquity" type="xs:double" />
+              <xs:element name="marginableSecurities" type="xs:double" />
+              <xs:element name="maxAvailableForWithdrawal" type="xs:double" />
+              <xs:element name="minEquityCall" type="xs:double" />
+              <xs:element name="nonMarginableSecuritiesAndOptions" type="xs:double" />
+              <xs:element name="totalShortValue" type="xs:double" />
+              <xs:element name="shortReserve" type="xs:double" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AccountListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="Account">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accountDesc" type="xs:string" />
+              <xs:element name="accountId" type="xs:unsignedInt" />
+              <xs:element name="marginLevel" type="xs:string" />
+              <xs:element name="netAccountValue" type="xs:double" />
+              <xs:element name="registrationType" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AccountPositionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="accountId" type="xs:unsignedInt" />
+        <xs:element name="count" type="xs:short" />
+        <xs:element name="marker" type="xs:string" />
+        <xs:element name="AccountPositions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="AccountPosition">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="costBasis" type="xs:double" />
+                    <xs:element name="description" type="xs:string" />
+                    <xs:element name="longOrShort" type="xs:string" />
+                    <xs:element name="marginable" type="xs:boolean" />
+                    <xs:element name="productId">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="symbol" type="xs:string" />
+                          <xs:element name="typeCode" type="xs:string" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="qty" type="xs:double" />
+                    <xs:element name="marketValue" type="xs:double" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="GetOrderListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="orderListResponse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="count" type="xs:int" />
+              <xs:element name="marker" type="xs:string" />
+              <xs:element name="orderDetails">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element maxOccurs="unbounded" name="OrderDetails">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="order">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="orderId" type="xs:long" />
+                                <xs:element name="orderPlacedTime" type="xs:unsignedLong" />
+                                <xs:element minOccurs="0" name="orderExecutedTime" type="xs:unsignedLong" />
+                                <xs:element name="orderValue" type="xs:double" />
+                                <xs:element name="orderStatus" type="xs:string" />
+                                <xs:element name="orderType" type="xs:string" />
+                                <xs:element name="orderTerm" type="xs:string" />
+                                <xs:element name="priceType" type="xs:string" />
+                                <xs:element name="limitPrice" type="xs:double" />
+                                <xs:element name="stopPrice" type="xs:double" />
+                                <xs:element name="legDetails">
+                                  <xs:complexType>
+                                    <xs:sequence>
+                                      <xs:element maxOccurs="unbounded" name="LegDetails">
+                                        <xs:complexType>
+                                          <xs:sequence>
+                                            <xs:element name="legNumber" type="xs:long" />
+                                            <xs:element name="symbolInfo">
+                                              <xs:complexType>
+                                                <xs:sequence>
+                                                  <xs:element name="symbol" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="callPut" type="xs:string" />
+                                                  <xs:element minOccurs="0" name="expYear" type="xs:short" />
+                                                  <xs:element minOccurs="0" name="expMonth" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="expDay" type="xs:unsignedByte" />
+                                                  <xs:element minOccurs="0" name="strikePrice" type="xs:double" />
+                                                </xs:sequence>
+                                              </xs:complexType>
+                                            </xs:element>
+                                            <xs:element name="symbolDescription" type="xs:string" />
+                                            <xs:element name="orderAction" type="xs:string" />
+                                            <xs:element name="orderedQuantity" type="xs:double" />
+                                            <xs:element name="filledQuantity" type="xs:double" />
+                                            <xs:element name="executedPrice" type="xs:double" />
+                                            <xs:element name="estimatedCommission" type="xs:double" />
+                                            <xs:element name="estimatedFees" type="xs:double" />
+                                          </xs:sequence>
+                                        </xs:complexType>
+                                      </xs:element>
+                                    </xs:sequence>
+                                  </xs:complexType>
+                                </xs:element>
+                                <xs:element minOccurs="0" name="replacedByOrderId" type="xs:long" />
+                                <xs:element name="allOrNone" type="xs:boolean" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PlaceEquityOrder">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="EquityOrderRequest">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accountId" type="xs:unsignedInt" minOccurs="1" />
+              <xs:element name="clientOrderId" type="xs:string" minOccurs="1" />
+              <xs:element name="limitPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="previewId" type="xs:long" minOccurs="0" />
+              <xs:element name="stopPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="allOrNone" type="xs:boolean" minOccurs="0" />
+              <xs:element name="quantity" type="xs:int" minOccurs="1" />
+              <xs:element name="reserveOrder" type="xs:boolean" minOccurs="0" />
+              <xs:element name="reserveQuantity" type="xs:int" minOccurs="0" />
+              <xs:element name="symbol" type="xs:string" minOccurs="1" />
+              <xs:element name="orderAction" type="xs:string" minOccurs="1" />
+              <xs:element name="priceType" type="xs:string" minOccurs="1" />
+              <xs:element name="routingDestination" type="xs:string" minOccurs="0" />
+              <xs:element name="marketSession" type="xs:string" minOccurs="1" />
+              <xs:element name="orderTerm" type="xs:string" minOccurs="1" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="PlaceEquityOrderResponse">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="1">
+        <xs:element name="equityOrderResponse">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="accountId" type="xs:int" minOccurs="0" />
+              <xs:element name="allOrNone" type="xs:boolean" minOccurs="0" />
+              <xs:element name="estimatedCommission" type="xs:double" minOccurs="0" />
+              <xs:element name="estimatedTotalAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="orderNum" type="xs:int" minOccurs="0" />
+              <xs:element name="orderTime" type="xs:long" minOccurs="0" />
+              <xs:element name="quantity" type="xs:int" minOccurs="0" />
+              <xs:element name="reserveOrder" type="xs:boolean" minOccurs="0" />
+              <xs:element name="reserveQuantity" type="xs:int" minOccurs="0" />
+              <xs:element name="orderTerm" type="xs:string" minOccurs="0" />
+              <xs:element name="limitPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="stopPrice" type="xs:double" minOccurs="0" />
+              <xs:element name="symbolDesc" type="xs:string" minOccurs="0" />
+              <xs:element name="symbol" type="xs:string" minOccurs="0" />
+              <xs:element name="orderAction" type="xs:string" minOccurs="0" />
+              <xs:element name="priceType" type="xs:string" minOccurs="0" />
+              <xs:element name="messageList" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="message" minOccurs="0" maxOccurs="1">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="msgDesc" type="xs:string" minOccurs="0" />
+                          <xs:element name="msgCode" type="xs:int" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="QuoteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="QuoteData">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="all">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="adjNonAdjFlag" type="xs:boolean" />
+                    <xs:element name="annualDividend" type="xs:double" />
+                    <xs:element name="ask" type="xs:double" />
+                    <xs:element name="askExchange" type="xs:string" />
+                    <xs:element name="askSize" type="xs:unsignedInt" />
+                    <xs:element name="askTime" type="xs:string" />
+                    <xs:element name="bid" type="xs:double" />
+                    <xs:element name="bidExchange" type="xs:string" />
+                    <xs:element name="bidSize" type="xs:unsignedInt" />
+                    <xs:element name="bidTime" type="xs:string" />
+                    <xs:element name="chgClose" type="xs:double" />
+                    <xs:element name="chgClosePrcn" type="xs:double" />
+                    <xs:element name="companyName" type="xs:string" />
+                    <xs:element name="daysToExpiration" type="xs:unsignedInt" />
+                    <xs:element name="dirLast" type="xs:string" />
+                    <xs:element name="dividend" type="xs:double" />
+                    <xs:element name="eps" type="xs:double" />
+                    <xs:element name="estEarnings" type="xs:double" />
+                    <xs:element name="exDivDate" type="xs:string" />
+                    <xs:element name="exchgLastTrade" type="xs:string" />
+                    <xs:element name="fsi" type="xs:string" />
+                    <xs:element name="high" type="xs:double" />
+                    <xs:element name="high52" type="xs:double" />
+                    <xs:element name="highAsk" type="xs:double" />
+                    <xs:element name="highBid" type="xs:double" />
+                    <xs:element name="lastTrade" type="xs:double" />
+                    <xs:element name="low" type="xs:double" />
+                    <xs:element name="low52" type="xs:double" />
+                    <xs:element name="lowAsk" type="xs:double" />
+                    <xs:element name="lowBid" type="xs:double" />
+                    <xs:element name="numTrades" type="xs:unsignedInt" />
+                    <xs:element name="open" type="xs:double" />
+                    <xs:element name="openInterest" type="xs:long" />
+                    <xs:element name="optionStyle" />
+                    <xs:element name="optionUnderlier" />
+                    <xs:element name="prevClose" type="xs:double" />
+                    <xs:element name="prevDayVolume" type="xs:long" />
+                    <xs:element name="primaryExchange" type="xs:string" />
+                    <xs:element name="symbolDesc" type="xs:string" />
+                    <xs:element name="todayClose" type="xs:double" />
+                    <xs:element name="totalVolume" type="xs:long" />
+                    <xs:element name="upc" type="xs:long" />
+                    <xs:element name="volume10Day" type="xs:long" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="dateTime" type="xs:string" />
+              <xs:element name="product">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="symbol" type="xs:string" />
+                    <xs:element name="type" type="xs:string" />
+                    <xs:element name="exchange" type="xs:string" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>
