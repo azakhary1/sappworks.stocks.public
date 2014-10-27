@@ -46,5 +46,6 @@ This set of libraries is used in production in my trading automation, so the imp
 See this page to get started:  [Getting Started](https://github.com/bmsapp/sappworks.stocks.public/wiki/Getting-Started)
 
 ##Special Thanks
-**The OAuth Bits**  
 To [jejernig](http://stackoverflow.com/users/616499/jejernig) for [DevDefined.OAuth.Etrade](https://github.com/jejernig/DevDefined.OAuth---Etrade/network).  Excellent work!
+
+To Chris Benshoof for keeping the fire.
