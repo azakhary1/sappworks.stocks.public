@@ -6,6 +6,8 @@ This is a not-quite-feature-complete fully managed client for the ETrade API.  S
  - Execute limit orders
  - Automatically adhere to rate limits
 
+See this page to get started:  [Getting Started](https://github.com/bmsapp/sappworks.stocks.public/wiki/Getting-Started)
+
 ##Example
 ```csharp
   // create the service client
@@ -41,8 +43,6 @@ This is a not-quite-feature-complete fully managed client for the ETrade API.  S
   // execute them
   var response = client.ExecuteOrders(accountId, orders);
 ```
-
-See this page to get started:  [Getting Started](https://github.com/bmsapp/sappworks.stocks.public/wiki/Getting-Started)
 
 ##Special Thanks
 To [jejernig](http://stackoverflow.com/users/616499/jejernig) for [DevDefined.OAuth.Etrade](https://github.com/jejernig/DevDefined.OAuth---Etrade/network).  Excellent work!
