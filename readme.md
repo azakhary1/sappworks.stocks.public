@@ -4,6 +4,7 @@ This is a not-quite-feature-complete fully managed client for the ETrade API.  S
  - Get accounts & balances
  - Get quotes
  - Execute limit orders
+ - Automatically adhere to rate limits
 
 ##Example
 ```csharp
