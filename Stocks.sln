@@ -1,20 +1,12 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{28C69102-D8A8-4F42-AF94-687E4027FDF4}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0690B862-A31F-4DD7-ABBC-BB8851357E60}"
 	ProjectSection(SolutionItems) = preProject
 		Local.testsettings = Local.testsettings
 		Stocks.vsmdi = Stocks.vsmdi
 		Strategy\Strategy.csproj = Strategy\Strategy.csproj
 		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OAuth", "OAuth", "{725AFBEF-40D4-4133-9A62-E2122FE878DC}"
-	ProjectSection(SolutionItems) = preProject
-		Dependencies\OAuth\DevDefined.OAuth.dll = Dependencies\OAuth\DevDefined.OAuth.dll
-		Dependencies\OAuth\DevDefined.OAuth.XML = Dependencies\OAuth\DevDefined.OAuth.XML
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ETrade", "ETrade\ETrade.csproj", "{E2E4FD35-C6CC-4781-8A48-426FE347E85B}"
@@ -69,9 +61,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{725AFBEF-40D4-4133-9A62-E2122FE878DC} = {28C69102-D8A8-4F42-AF94-687E4027FDF4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		VisualSVNWorkingCopyRoot = .

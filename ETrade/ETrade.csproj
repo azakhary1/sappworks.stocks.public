@@ -33,8 +33,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevDefined.OAuth">
-      <HintPath>..\Dependencies\OAuth\DevDefined.OAuth.dll</HintPath>
+    <Reference Include="DevDefined.OAuth, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a3261f5b4697e67d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\DevDefined.OAuth.dll</HintPath>
     </Reference>
     <Reference Include="MoreLinq">
       <HintPath>..\packages\morelinq.1.1.0\lib\net35\MoreLinq.dll</HintPath>
@@ -70,6 +71,8 @@
     <Compile Include="TokenBucket.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Lib\DevDefined.OAuth.dll" />
+    <Content Include="Lib\DevDefined.OAuth.XML" />
     <Content Include="Models\Xml\AccountBalanceResponse.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -94,10 +97,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>"$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v7.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"
+    <PreBuildEvent>rem in VS 2010 use below:
+rem "$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v7.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"
 
 rem in VS 2012 use below:
-rem "$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"</PreBuildEvent>
+"$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"
+
+rem in VS 2013 use below:
+rem "$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.1A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

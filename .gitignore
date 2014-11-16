@@ -47,7 +47,7 @@ _ReSharper*/
 ~$*
 
 #NuGet
-packages/
+#packages/
 
 #ncrunch
 *ncrunch*
