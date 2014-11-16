@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{3868CCE2-565B-4493-B828-30E4EDB2CA67}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{737C8EBD-0CB8-4FA9-8EAE-334229247708}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = Stocks.vsmdi
@@ -58,6 +60,16 @@ Global
 		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{3868CCE2-565B-4493-B828-30E4EDB2CA67}.Release|x86.ActiveCfg = Release|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Release|Any CPU.Build.0 = Release|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{737C8EBD-0CB8-4FA9-8EAE-334229247708}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
