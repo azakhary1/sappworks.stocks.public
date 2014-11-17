@@ -46,3 +46,45 @@ See this page to get started:  [Getting Started](https://github.com/bmsapp/sappw
 
 ##Special Thanks
 To [jejernig](http://stackoverflow.com/users/616499/jejernig) for [DevDefined.OAuth.Etrade](https://github.com/jejernig/DevDefined.OAuth---Etrade/network).  Excellent work!
+
+##License
+
+###MIT License
+
+Copyright (c) 2012 Benjamin Sapp
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, ACCURACY, AND NONINFRINGEMENT. IN NO EVENT 
+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR 
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
+DEALINGS IN	THE SOFTWARE.
+
+###Disclaimers 
+
+All product names, logos, brands and other trademarks referred to within this
+software, such as "E*Trade" or others, are the property of their 
+respective trademark holders. These trademark holders are not affiliated with 
+the developer(s) of this software, Sappworks, or Benjamin Sapp. They do not 
+sponsor or endorse our materials.
+
+###Terms of Use
+
+Via this software you are using the E*TRADE API, E*TRADE Developer Platform 
+website and its contents ("Developer Platform").  You and, if applicable, the 
+company you represent accept and agree to be bound 	by the terms, conditions, 
+and disclosures established by E*TRADE including their "Terms of Use", 
+"Application Programming Interface License Agreement", and their "Application 
+Programming Interface User Agreement" or any other agreements they establish 
+concerning the use of their products.
