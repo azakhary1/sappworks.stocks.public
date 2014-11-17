@@ -29,19 +29,19 @@
 	All product names, logos, brands and other trademarks referred to within this
 	software, such as "E*Trade" or others, are the property of their 
 	respective trademark holders. These trademark holders are not affiliated with 
-	the developer(s) of this software, Sappworks, or Benjamin Sapp. They do not 
-	sponsor or endorse our materials.
+	the developer(s) of this software, Sappworks, or Benjamin Sapp. E*TRADE does 
+	not sponsor or endorse our software.
 
   ================================================================================
 
 	Terms of Use
-
-	Via this software you are using the E*TRADE API, E*TRADE Developer Platform 
-	website and its contents ("Developer Platform").  You and, if applicable, the 
-	company you represent accept and agree to be bound 	by the terms, conditions, 
-	and disclosures established by E*TRADE including their "Terms of Use", 
-	"Application Programming Interface License Agreement", and their "Application 
-	Programming Interface User Agreement" or any other agreements they establish 
-	concerning the use of their products.
+	
+	Via this software ("Sappworks.Stocks") you are using the E*TRADE API, E*TRADE 
+	Developer Platform website and its contents ("Developer Platform").  You and, 
+	if applicable, the company you represent accept and agree to be bound by the 
+	terms, conditions, and disclosures established by E*TRADE including their 
+	"Terms of Use", "Application Programming Interface License Agreement", and 
+	their "Application Programming Interface User Agreement" or any other 
+	agreements they establish regarding the use of their software.
 
   ================================================================================
