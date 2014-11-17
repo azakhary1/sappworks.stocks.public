@@ -21,20 +21,10 @@
 	OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
 	ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER 
 	DEALINGS IN	THE SOFTWARE.
-
+	
   ================================================================================
 
-	Disclaimers 
-
-	All product names, logos, brands and other trademarks referred to within this
-	software, such as "E*Trade" or others, are the property of their 
-	respective trademark holders. These trademark holders are not affiliated with 
-	the developer(s) of this software, Sappworks, or Benjamin Sapp. E*TRADE does 
-	not sponsor or endorse our software.
-
-  ================================================================================
-
-	Terms of Use
+  	Terms of Use
 	
 	Via this software ("Sappworks.Stocks") you are using the E*TRADE API, E*TRADE 
 	Developer Platform website and its contents ("Developer Platform").  You and, 
@@ -43,5 +33,20 @@
 	"Terms of Use", "Application Programming Interface License Agreement", and 
 	their "Application Programming Interface User Agreement" or any other 
 	agreements they establish regarding the use of their software.
+
+  ================================================================================
+
+	Disclosures
+  
+	All product names, logos, brands and other trademarks referred to within this
+	software, such as "E*Trade" or others, are the property of their 
+	respective trademark holders. These trademark holders are not affiliated with 
+	the developer(s) of this software, Sappworks, or Benjamin Sapp. E*TRADE does 
+	not sponsor or endorse our software.
+	
+	This software contains programming examples.  All sample code is provided by 
+	for illustrative purposes only.  This software has not been thoroughly 
+	tested under all conditions.  This software is provided without guarantee 
+	or imply of reliability, serviceability, or function.
 
   ================================================================================
