@@ -2,6 +2,7 @@
 namespace Sappworks.Stocks
 {
     using System;
+    using System.Collections.Generic;
 
     [Serializable]
     public class AuthenticationException : Exception
@@ -13,5 +14,18 @@ namespace Sappworks.Stocks
           System.Runtime.Serialization.SerializationInfo info,
           System.Runtime.Serialization.StreamingContext context)
             : base(info, context) { }
+
+        public string AcceptableVersionTo { get; set; }
+        public string AcceptableVersionFrom { get; set; }
+        public IEnumerable<string> ParametersRejected { get; set; }
+        public IEnumerable<string> ParametersAbsent { get; set; }
+        public string ProblemAdvice { get; set; }
+        public string Problem { get; set; }
+        public DateTime? AcceptableTimeStampsTo { get; set; }
+        public DateTime? AcceptableTimeStampsFrom { get; set; }
+
+        public Uri RequestUri { get; set; }
+        public IEnumerable<string> RequestHeaders { get; set; }
+
     }
 }

@@ -43,6 +43,14 @@ namespace Sappworks.Stocks.ETrade
 
         private AccessToken _accessToken;
 
+        public bool AccessTokenIsSet
+        {
+            get 
+            { 
+                return _accessToken.IsSet(); 
+            }
+        }
+
         // Rate Limits:
         // Orders          2 incoming requests per second per user, 7000 per hour
         // Accounts        2 incoming requests per second per user, 7000 per hour
@@ -52,6 +60,8 @@ namespace Sappworks.Stocks.ETrade
             _ordersTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 46)),
             _accountsTokenBucket = new TokenBucket(2, new TimeSpan(0, 0, 0, 1, 102)),
             _quotesTokenBucket = new TokenBucket(4, new TimeSpan(0, 0, 0, 1, 46));
+
+
 
         public ETradeClient(Stocks.OAuthToken consumerToken, bool productionMode = false, Stocks.OAuthToken accessToken = null)
         {
@@ -76,7 +86,7 @@ namespace Sappworks.Stocks.ETrade
             }
         }
 
-        private void GetRequestToken()
+        private void GetRequestToken(Uri callbackUri = null)
         {
             if (!_consumerToken.IsSet()) { throw new OAuthGetRequestTokenException("Consumer token and secret are required."); }
             if (_consumerContext == null) { throw new OAuthGetRequestTokenException("Consumer context is not set up."); }
@@ -85,35 +95,50 @@ namespace Sappworks.Stocks.ETrade
             //// debug only
             //_session.ResponseBodyAction = ResponseBodyAction;
 
-            //try
-            //{
+            try
+            {
                 lock (_locker)
                 {
+                    if (callbackUri != null)
+                    {
+                        // in desktop program the user can copy/paste the verification key, or 
+                        // in a web application, etrade can automatically redirect the user back 
+                        // to your application with verification key included in the querystring
+
+                        _session.CallbackUri = callbackUri;
+                    }
+
                     _requestToken = _session.GetRequestToken().ToRequestToken();
-
-                    //var rtc = _session.BuildRequestTokenContext("GET");
-                    //var rd = rtc.GetRequestDescription();
-
-                    //Console.WriteLine(rd.Url);
-                    //Console.WriteLine("Headers:" + Environment.NewLine);
-                    //Console.WriteLine(string.Join(Environment.NewLine, rd.Headers.AllKeys.Select(k => k + ": " + rd.Headers[k])));
                 }
-            //}
-            //catch (OAuthException ex)
-            //{
-            //    Console.WriteLine(ex.Context.RawUri);
-            //    Console.WriteLine("Request Headers:" + Environment.NewLine);
-            //    Console.WriteLine(string.Join(Environment.NewLine, ex.Context.AuthorizationHeaderParameters.AllKeys.Select(k => k + ": " + ex.Context.AuthorizationHeaderParameters[k])));
-
-            //    Console.WriteLine("Problem: " + ex.Report.Problem);
-            //    Console.WriteLine("Problem advice: " + ex.Report.ProblemAdvice);
-            //    Console.WriteLine("Parameters absent: " + string.Join(", ", ex.Report.ParametersAbsent));
-            //    Console.WriteLine("Parameters rejected: " + string.Join(", ", ex.Report.ParametersRejected));
-            //}
-
-            if (_requestToken == null)
+            }
+            catch (OAuthException ex)
             {
-                throw new OAuthGetRequestTokenException("Unable to get Request token.");
+                var exception = new OAuthGetRequestTokenException(ex.Message, ex);
+
+                MapProblemReport(ex, exception);
+
+                throw exception;
+            }
+        }
+
+        private void MapProblemReport(OAuthException oauthException, AuthenticationException coreException)
+        {
+            if (oauthException.Report != null)
+            {
+                coreException.AcceptableVersionTo = oauthException.Report.AcceptableVersionTo;
+                coreException.AcceptableVersionFrom = oauthException.Report.AcceptableVersionFrom;
+                coreException.ParametersRejected = oauthException.Report.ParametersRejected;
+                coreException.ParametersAbsent = oauthException.Report.ParametersAbsent;
+                coreException.ProblemAdvice = oauthException.Report.ProblemAdvice;
+                coreException.Problem = oauthException.Report.Problem;
+                coreException.AcceptableTimeStampsTo = oauthException.Report.AcceptableTimeStampsTo;
+                coreException.AcceptableTimeStampsFrom = oauthException.Report.AcceptableTimeStampsFrom;
+            }
+
+            if (oauthException.Context != null)
+            {
+                coreException.RequestUri = oauthException.Context.RawUri;
+                coreException.RequestHeaders = oauthException.Context.Headers.AllKeys.Select(k => k + ": " + oauthException.Context.Headers[k]);
             }
         }
 
@@ -142,21 +167,27 @@ namespace Sappworks.Stocks.ETrade
             if (string.IsNullOrWhiteSpace(verificationKey)) { throw new OAuthGetAccessTokenException("Verification key is required you need to get it from etrade first."); }
             if (_session == null) { throw new OAuthGetRequestTokenException("OAuthSession is not estabblished"); }
 
-            lock (_locker)
-            { 
-                _accessToken = _session.ExchangeRequestTokenForAccessToken(_requestToken, verificationKey).ToAccessToken();
-            }
-
-            if (_accessToken == null)
+            try
             {
-                throw new OAuthGetAccessTokenException("Unable to get access token.");
-            }
+                lock (_locker)
+                {
+                    _accessToken = _session.ExchangeRequestTokenForAccessToken(_requestToken, verificationKey).ToAccessToken();
+                }
 
-            return new Stocks.OAuthToken
+                return new Stocks.OAuthToken
+                {
+                    Token = _accessToken.Token,
+                    Secret = _accessToken.TokenSecret
+                };
+            }
+            catch (OAuthException ex)
             {
-                Token = _accessToken.Token,
-                Secret = _accessToken.TokenSecret
-            };
+                var exception = new OAuthGetAccessTokenException(ex.Message, ex);
+
+                MapProblemReport(ex, exception);
+
+                throw exception;                
+            }
         }
 
         private static void ObeyRequestRateLimits(Type t)
@@ -412,19 +443,27 @@ namespace Sappworks.Stocks.ETrade
                 p.OutsandingOrdersExist = symbolsWithOpenOrders.Contains(p.Symbol);
             }
 
-            return 
-                new Account
+            var account = new Account
+            {
+                Id = accountResponse.accountId,
+                Description = accountResponse.accountDesc,
+                NetValue = accountResponse.netAccountValue,
+                Positions = accountPositions,
+                IsMargin = isMargin
+            };
+
+            if (balanceResponse != null)
+            {
+                account.Cash = balanceResponse.accountBalance.netCash;
+
+                if (isMargin == true && balanceResponse.marginAccountBalance != null)
                 {
-                    Id = accountResponse.accountId,
-                    Description = accountResponse.accountDesc,
-                    NetValue = accountResponse.netAccountValue,
-                    Cash = balanceResponse != null ? balanceResponse.accountBalance.netCash : 0d,
-                    Positions = accountPositions,
-                    IsMargin = isMargin,
-                    Margin = (isMargin == true && balanceResponse != null && balanceResponse.marginAccountBalance != null) ?
-                        balanceResponse.marginAccountBalance.marginEquity 
-                        : 0d
-                };
+                    account.MarginableSecurities = balanceResponse.marginAccountBalance.marginableSecurities;
+                    account.MarginEquity = balanceResponse.marginAccountBalance.marginEquity;
+                }
+            }
+
+            return account;
         }
 
         public IEnumerable<OrderSubmission> ExecuteOrders(uint accountId, IEnumerable<Order> orders)

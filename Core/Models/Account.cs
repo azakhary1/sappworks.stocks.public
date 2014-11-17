@@ -11,6 +11,7 @@ namespace Sappworks.Stocks
         public double NetValue { get; set; }
         public IEnumerable<Position> Positions { get; set; }
         public bool IsMargin { get; set; }
-        public double Margin { get; set; }
+        public double MarginableSecurities { get; set; }
+        public double MarginEquity { get; set; }
     }
 }
