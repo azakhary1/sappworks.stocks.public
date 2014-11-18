@@ -1,6 +1,6 @@
 #The Missing C# E*Trade Client
 
-This is a not-quite-feature-complete fully managed client for the ETrade API.  So far it can:
+This is an (incomplete) fully managed client for the ETrade API.  So far it can:
  - Get accounts & balances
  - Get quotes
  - Execute limit orders
