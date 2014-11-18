@@ -10,38 +10,37 @@ See this page to get started:  [Getting Started](https://github.com/bmsapp/sappw
 
 ##Example
 ```csharp
-  // create the service client
-  var client = new StocksRepository(_consumerToken, _accessToken);
-  
-  // get all accounts
-  var accounts = client.GetAccounts();
+	// create the service client
+	var client = new ETradeClient(_consumerToken);
+
+	// get all accounts
+	var accounts = client.GetAccounts();
 ```
 
 ```csharp
-  int accountId = 30049872;
-  
-  // create some orders
-  var orders = 
-      new List<Order>
-      {
-          new Order
-          {
-              IsSale = false,
-              Price = 1m,
-              Quantity = 1,
-              Symbol = "HP"
-          },
-          new Order
-          {
-              IsSale = true,
-              Price = 1m,
-              Quantity = 1,
-              Symbol = "MSFT"
-          }
-     }; 
 
-  // execute them
-  var response = client.ExecuteOrders(accountId, orders);
+	// create some orders
+	var orders =
+		new List<Order>
+		  {
+			  new Order
+			  {
+				  IsSale = false, // buy order
+				  Price = 32.00d,
+				  Quantity = 100,
+				  Symbol = "VA"
+			  },
+			  new Order
+			  {
+				  IsSale = true, // sell order
+				  Price = 260.00d,
+				  Quantity = 100,
+				  Symbol = "TSLA"
+			  }
+		 };
+
+	// execute them
+	var response = client.ExecuteOrders(account.Id, orders);
 ```
 
 ##Special Thanks

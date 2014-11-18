@@ -25,7 +25,7 @@ namespace Sample
 
         static void Main(string[] args)
         {
-            stockBrokerService = new ETradeClient(SandboxConsumerToken, false, accessToken);
+            stockBrokerService = new ETradeClient(SandboxConsumerToken);
 
             // authenticate
             OAuthProcess();
@@ -42,7 +42,7 @@ namespace Sample
             // get a list of symbols for which there are open orders
             var openOrderSymbols = stockBrokerService.GetOpenOrderSymbols();
 
-            // execute a buy order
+            // execute some orders
             var orders =
                 new List<Order>
                   {
@@ -61,6 +61,8 @@ namespace Sample
                           Symbol = "TSLA"
                       }
                  };
+
+            var response = stockBrokerService.ExecuteOrders(account.Id, orders);
 
             ExitPrompt();
         }
