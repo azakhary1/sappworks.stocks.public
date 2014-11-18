@@ -23,20 +23,44 @@ namespace Sample
                 Secret = "d76b6b6b487dfc7c01186540b4a94852"
             };
 
-        static Sappworks.Stocks.OAuthToken accessToken;
-
         static void Main(string[] args)
         {
             stockBrokerService = new ETradeClient(SandboxConsumerToken, false, accessToken);
 
+            // authenticate
             OAuthProcess();
 
-            // todo:
-            //- get account
-            //- get quotes
-            //- get position quotes
-            //- get open order symbols
-            //- execute limit orders
+            // get account
+            var account = stockBrokerService.GetAccount();
+
+            // update position quotes
+            account.Positions = stockBrokerService.GetQuotes(account.Positions);
+
+            // get some other quotes
+            var quotes = stockBrokerService.GetQuotes(new[] { "VA", "TSLA" });
+
+            // get a list of symbols for which there are open orders
+            var openOrderSymbols = stockBrokerService.GetOpenOrderSymbols();
+
+            // execute a buy order
+            var orders =
+                new List<Order>
+                  {
+                      new Order
+                      {
+                          IsSale = false, // buy order
+                          Price = 32.00d,
+                          Quantity = 100,
+                          Symbol = "VA"
+                      },
+                      new Order
+                      {
+                          IsSale = true, // sell order
+                          Price = 260.00d,
+                          Quantity = 100,
+                          Symbol = "TSLA"
+                      }
+                 };
 
             ExitPrompt();
         }
@@ -45,8 +69,8 @@ namespace Sample
         {
             Console.WriteLine(ex.RequestUri);
             Console.WriteLine();
-            Console.WriteLine("Request Headers:" + Environment.NewLine);
-            Console.WriteLine(string.Join(Environment.NewLine + "\t", ex.RequestHeaders));
+            Console.WriteLine("Authorization Headers:" + Environment.NewLine);
+            Console.WriteLine(string.Join(Environment.NewLine + "\t", ex.AuthorizationHeaders));
             Console.WriteLine();
             Console.WriteLine("Problem: " + ex.Problem);
             Console.WriteLine();
@@ -74,17 +98,14 @@ namespace Sample
             // the access token authenticates every request
             // it will expire after 2 hours idle and 12am pacific time 
 
-            if (!accessToken.IsSet())
+            // send the user to log in and return to your app with the verification key
+            try
             {
-                // have the user log in and return to your app with the verification key
-                try
-                {
-                    Process.Start(stockBrokerService.GetUserAuthorizationUrl());
-                }
-                catch (OAuthGetRequestTokenException ex)
-                {
-                    Complain(ex);
-                }
+                Process.Start(stockBrokerService.GetUserAuthorizationUrl());
+            }
+            catch (OAuthGetRequestTokenException ex)
+            {
+                Complain(ex);
             }
 
             string verificationKey;
@@ -99,8 +120,8 @@ namespace Sample
 
             try
             {
-                // now that we have the verification key, attempt to exchange it for the access token
-                accessToken = stockBrokerService.GetAccessToken(verificationKey);
+                // now that we have the verification key, exchange it for the access token
+                stockBrokerService.GetAccessToken(verificationKey);
             }
             catch (OAuthGetAccessTokenException ex)
             {

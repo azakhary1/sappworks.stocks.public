@@ -44,7 +44,6 @@
     <Compile Include="Models\OrderSubmission.cs" />
     <Compile Include="Models\QuoteType.cs" />
     <Compile Include="Numerics\Precision.cs" />
-    <Compile Include="Models\OAuthTokenExtensions.cs" />
     <Compile Include="Models\AuthenticationException.cs" />
     <Compile Include="Models\OAuthGetAccessTokenException.cs" />
     <Compile Include="Models\OAuthGetRequestTokenException.cs" />

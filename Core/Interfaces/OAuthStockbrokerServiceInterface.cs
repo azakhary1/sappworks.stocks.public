@@ -12,6 +12,6 @@ namespace Sappworks.Stocks
         IEnumerable<Quote> GetQuotes(IEnumerable<string> symbols, QuoteType quoteType = default(QuoteType));
         string GetUserAuthorizationUrl();
         IEnumerable<string> GetOpenOrderSymbols(uint accountId = 0);
-        bool AccessTokenIsSet { get; set; }
+        bool AccessTokenIsSet { get; }
     }
 }

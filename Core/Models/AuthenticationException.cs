@@ -25,7 +25,7 @@ namespace Sappworks.Stocks
         public DateTime? AcceptableTimeStampsFrom { get; set; }
 
         public Uri RequestUri { get; set; }
-        public IEnumerable<string> RequestHeaders { get; set; }
+        public IEnumerable<string> AuthorizationHeaders { get; set; }
 
     }
 }

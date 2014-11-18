@@ -31,8 +31,6 @@ namespace Sappworks.Stocks.ETrade
             AccessTokenUrl = "https://etws.etrade.com/oauth/access_token",
             DataUrl = "https://etws.etrade.com",
             SandboxDataUrl = "https://etwssandbox.etrade.com",
-            LoginUrl = "https://us.etrade.com/login.fcc",
-            UserAgreementUrl = "https://us.etrade.com/e/t/etws/TradingAPICustomerInfo",
             RenewAccessTokenUrl = "https://etws.etrade.com/oauth/renew_access_token";
 
         private readonly OAuthSession _session;
@@ -138,7 +136,7 @@ namespace Sappworks.Stocks.ETrade
             if (oauthException.Context != null)
             {
                 coreException.RequestUri = oauthException.Context.RawUri;
-                coreException.RequestHeaders = oauthException.Context.Headers.AllKeys.Select(k => k + ": " + oauthException.Context.Headers[k]);
+                coreException.AuthorizationHeaders = oauthException.Context.AuthorizationHeaderParameters.AllKeys.Select(k => k + ": " + oauthException.Context.AuthorizationHeaderParameters[k]);
             }
         }
 
