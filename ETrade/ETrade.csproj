@@ -101,9 +101,9 @@
 rem "$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v7.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"
 
 rem in VS 2012 use below:
-"$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"
+rem "$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.0A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"
 
-rem in VS 2013 use below:
+rem in VS 2013 use below (untested):
 rem "$(Registry:HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SDKs\Windows\v8.1A\@InstallationFolder)bin\NETFX 4.0 Tools\xsd.exe" /c "$(ProjectDir)\Models\Xml\GeneratedClasses.xsd" /o:"$(ProjectDir)\Models" /n:"Sappworks.Stocks.ETrade"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
